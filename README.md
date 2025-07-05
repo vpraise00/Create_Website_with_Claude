@@ -1,235 +1,884 @@
 # 🌟 Personal Portfolio Website
 
-> 개인 포트폴리오 웹사이트 프로젝트입니다. React와 Node.js를 사용하여 제작되었으며, Docker로 컨테이너화되어 있습니다.
+> A modern, responsive portfolio website built with React and Node.js. Features dark mode, interactive animations, and a RESTful API backend.
 
-## 📋 목차
+[![Node.js](https://img.shields.io/badge/Node.js-16%2B-green)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-18.2.0-blue)](https://reactjs.org/)
+[![Express](https://img.shields.io/badge/Express-4.18.2-lightgrey)](https://expressjs.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-- [프로젝트 개요](#프로젝트-개요)
-- [기술 스택](#기술-스택)
-- [프로젝트 구조](#프로젝트-구조)
-- [빠른 시작](#빠른-시작)
-- [실행 방법](#실행-방법)
-- [개인 정보 수정](#개인-정보-수정)
-- [배포](#배포)
-- [트러블슈팅](#트러블슈팅)
+## � Quick Start (3 Steps)
 
-## ### 🐳 Docker 관련 문제
+### Step 1: Prerequisites
+Make sure you have **Node.js** installed:
+- Download from [https://nodejs.org/](https://nodejs.org/)
+- Install the **LTS version** (recommended)
+- Restart your computer after installation
 
-#### ❌ Docker Desktop이 실행되지 않음
-
-**해결방법**:
-- Docker Desktop 설치 및 실행 확인
-- WSL 2 설정 확인 (Windows)
-- 관리자 권한으로 실행
-
-### 🛑 서버 종료 방법
-
-#### ✅ 정상적인 서버 종료
-
-**기본 종료 방법**:
-```cmd
-Ctrl + C
+### Step 2: Clone & Navigate
+```bash
+git clone https://github.com/your-username/personal-portfolio.git
+cd personal-portfolio
 ```
 
-**강제 종료 방법**:
-```cmd
-Ctrl + Break
+### Step 3: Run!
+**Option A: One-Click Start (Windows)**
+```bash
+quick-start-final.bat
 ```
 
-#### ❌ 서버가 종료되지 않는 경우
-
-**포트 사용 프로세스 확인**:
-```cmd
-netstat -ano | findstr :3000  # 프론트엔드
-netstat -ano | findstr :3001  # 백엔드
+**Option B: Command Line (All Platforms)**
+```bash
+npm start
 ```
 
-**프로세스 강제 종료**:
-```cmd
-taskkill /PID [프로세스ID] /F
+🎉 **That's it!** Your portfolio will automatically open at:
+- **🌐 Website**: http://localhost:3000
+- **🔧 API**: http://localhost:3001
+
+---
+
+## 📋 Table of Contents
+
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [⚙️ Installation Guide](#️-installation-guide)
+- [🔧 Usage](#-usage)
+- [🎨 Customization](#-customization)
+- [🐳 Docker Support](#-docker-support)
+- [🔧 API Documentation](#-api-documentation)
+- [🚀 Deployment](#-deployment)
+- [🛠️ Troubleshooting](#️-troubleshooting)
+- [🤝 Contributing](#-contributing)
+
+## ✨ Features
+
+### 🎨 Frontend Features
+- **� Fully Responsive** - Perfect on all devices
+- **🌙 Dark/Light Mode** - Toggle with system preference detection
+- **⚡ Interactive Animations** - Smooth transitions and hover effects
+- **🎯 Interactive Profile Image** - Physics-based animations on click
+- **🔄 Real-time API Integration** - Dynamic data loading from backend
+- **⚠️ Smart Error Handling** - Graceful fallbacks when backend is unavailable
+- **🎨 Modern UI/UX** - Clean, professional design
+
+### 🔧 Backend Features
+- **🛡️ Security First** - Helmet.js security headers, CORS protection
+- **📊 Health Monitoring** - Real-time server status and metrics
+- **🔍 API Documentation** - Self-documenting endpoints
+- **⚡ High Performance** - Optimized for speed and efficiency
+- **🔄 Environment Flexible** - Easy configuration via environment variables
+- **📝 Comprehensive Logging** - Request tracking and error monitoring
+
+### 🏗️ Development Experience
+- **🔧 Hot Reload** - Instant updates during development
+- **📦 Zero Configuration** - Works out of the box
+- **🐳 Docker Ready** - Containerized deployment support
+- **🔧 One-Click Scripts** - Automated setup and execution
+- **📋 Debug Friendly** - Detailed logging and error messages
+
+## 🛠️ Tech Stack
+
+| Layer | Technology | Version | Purpose |
+|-------|------------|---------|---------|
+| **Frontend** | React | 18.2.0 | UI Framework |
+| | Axios | 1.6.0 | HTTP Client |
+| | CSS3 | - | Styling & Animations |
+| **Backend** | Node.js | 16+ | Runtime Environment |
+| | Express.js | 4.18.2 | Web Framework |
+| | Helmet.js | 7.1.0 | Security Middleware |
+| | CORS | 2.8.5 | Cross-Origin Resource Sharing |
+| **DevOps** | Docker | - | Containerization |
+| | npm | 8+ | Package Management |
+| | Concurrently | 8.2.2 | Process Management |
+
+## ⚙️ Installation Guide
+
+### 🔍 Prerequisites Check
+Before starting, ensure you have:
+- **Node.js 16+** and **npm 8+** installed
+- **Git** for version control
+- **Modern web browser** (Chrome, Firefox, Safari, Edge)
+
+```bash
+# Check versions
+node --version    # Should show v16.0.0 or higher
+npm --version     # Should show 8.0.0 or higher
 ```
 
-**모든 Node.js 프로세스 종료**:
-```cmd
-taskkill /f /im node.exe
-```요
+### 📥 Method 1: Automated Installation (Recommended)
 
-### 주요 기능
-- 📱 **반응형 웹 디자인** - 모든 디바이스에서 최적화
-- 🎨 **모던한 UI/UX** - 깔끔하고 전문적인 디자인
-- 🔗 **소셜 미디어 링크** - GitHub, Instagram, LinkedIn 연결
-- 🛠️ **기술 스택 소개** - 보유 기술 시각적 표시
-- 📧 **연락처 정보** - 쉬운 연락 방법 제공
-- 🐳 **Docker 지원** - 컨테이너화된 배포
+**Windows Users:**
+```bash
+# Clone the repository
+git clone https://github.com/your-username/personal-portfolio.git
+cd personal-portfolio
 
-### 특징
-- ✅ **가상환경 불필요** - Node.js 프로젝트로 별도 가상환경 설정 없음
-- ✅ **간편한 설치** - 자동화된 설치 스크립트 제공
-- ✅ **원클릭 실행** - 배치 파일로 쉬운 실행
-- ✅ **개발자 친화적** - 명확한 프로젝트 구조와 문서
-
-## 🛠️ 기술 스택
-
-### Frontend
-- **React 18** - 사용자 인터페이스 라이브러리
-- **CSS3** - 모던한 스타일링
-- **Axios** - HTTP 클라이언트
-
-### Backend
-- **Node.js** - JavaScript 런타임
-- **Express.js** - 웹 프레임워크
-- **CORS** - 교차 출처 리소스 공유
-- **Helmet** - 보안 헤더 설정
-
-### DevOps
-- **Docker** - 컨테이너화
-- **Docker Compose** - 멀티 컨테이너 관리
-
-## 📁 프로젝트 구조
-
-```
-📦 Create_Website_with_Claude/
-├── 📁 frontend/                   # React 프론트엔드
-│   ├── 📁 public/                # 정적 파일
-│   │   ├── 📄 index.html         # 메인 HTML
-│   │   └── 📄 manifest.json      # PWA 설정
-│   ├── 📁 src/
-│   │   ├── 📁 components/        # React 컴포넌트
-│   │   │   ├── 📄 Header.js      # 네비게이션 바
-│   │   │   ├── 📄 About.js       # 개인 소개
-│   │   │   ├── 📄 Skills.js      # 기술 스택
-│   │   │   ├── 📄 Contact.js     # 연락처 & 소셜 링크
-│   │   │   └── 📄 Footer.js      # 푸터
-│   │   ├── 📁 styles/           # CSS 스타일시트
-│   │   ├── 📄 App.js            # 메인 앱 컴포넌트
-│   │   └── 📄 index.js          # 앱 진입점
-│   ├── 🐳 Dockerfile            # 프론트엔드 컨테이너 설정
-│   └── 📄 package.json          # 프론트엔드 의존성
-├── 📁 backend/                   # Node.js 백엔드
-│   ├── 📁 src/
-│   │   ├── 📁 controllers/       # 비즈니스 로직
-│   │   ├── 📁 routes/           # API 라우트
-│   │   └── 📄 server.js         # Express 서버
-│   ├── 🐳 Dockerfile            # 백엔드 컨테이너 설정
-│   └── 📄 package.json          # 백엔드 의존성
-├── 🐳 docker-compose.yml        # 개발환경 Docker 설정
-├── 🐳 docker-compose.prod.yml   # 프로덕션 Docker 설정
-├── 🚀 install.bat              # 의존성 설치 스크립트
-├── 🎯 quick-start.bat          # 대화형 실행 가이드
-├── ⚙️ start-backend.bat        # 백엔드 서버 실행
-├── 🎨 start-frontend.bat       # 프론트엔드 서버 실행
-├── 🧪 test-backend.bat         # 백엔드 테스트
-└── 📖 README.md                # 프로젝트 문서
+# One-click setup and start
+quick-start-final.bat
 ```
 
-## 🚀 빠른 시작
+**Linux/macOS Users:**
+```bash
+# Clone the repository
+git clone https://github.com/your-username/personal-portfolio.git
+cd personal-portfolio
 
-### � 필요한 환경
-- **Node.js 18+** - [nodejs.org](https://nodejs.org/)에서 다운로드
-- **Docker & Docker Compose** (선택사항) - 컨테이너 실행 시 필요
-
-### ⚡ 원클릭 실행 (권장)
-```cmd
-quick-start.bat
-```
-> 💡 **한국어 사용자 안내**: 모든 배치 파일의 메시지가 영어로 표시됩니다. 이는 Windows 명령 프롬프트의 한글 인코딩 문제를 방지하기 위함입니다.
-
-### 📦 수동 설치
-```cmd
-# 1. 의존성 설치
-install.bat
-
-# 2. 백엔드 실행 (터미널 1)
-start-backend.bat
-
-# 3. 프론트엔드 실행 (터미널 2)
-start-frontend.bat
+# Install all dependencies and start
+npm start
 ```
 
-### 🌐 접속 주소
-- **메인 웹사이트**: http://localhost:3000
-- **백엔드 API**: http://localhost:3001
-- **헬스체크**: http://localhost:3001/health
+### 🔧 Method 2: Manual Installation
 
-## 🚀 빠른 시작 가이드
+```bash
+# 1. Clone repository
+git clone https://github.com/your-username/personal-portfolio.git
+cd personal-portfolio
 
-### 🎯 가장 간단한 실행 방법 (추천)
+# 2. Install root dependencies
+npm install
 
-1. **Node.js 설치**
-   - https://nodejs.org/ 에서 LTS 버전 다운로드 및 설치
-   - 설치 시 "Add to PATH" 옵션 체크
+# 3. Install backend dependencies
+cd backend
+npm install
+cd ..
 
-2. **빠른 실행 가이드 사용**
-   ```cmd
-   quick-start.bat
-   ```
+# 4. Install frontend dependencies
+cd frontend
+npm install
+cd ..
+
+# 5. Start both servers
+npm start
+```
+
+### 📦 Method 3: Step-by-Step Installation
+
+```bash
+# Install dependencies only
+npm run install-all
+
+# Start servers
+npm start
+```
+
+## 🔧 Usage
+
+### 🚀 Development Mode
+
+**Start Both Servers (Recommended):**
+```bash
+npm start
+# Starts backend on :3001 and frontend on :3000
+```
+
+**Start Individually:**
+```bash
+# Terminal 1: Backend only
+npm run start-backend
+
+# Terminal 2: Frontend only  
+npm run start-frontend
+```
+
+**Windows Batch Files:**
+```bash
+# Core scripts for development
+install.bat          # Install all dependencies
+start-backend.bat    # Backend server only (port 3001)
+start-frontend.bat   # Frontend server only (port 3000)
+quick-start.bat      # Interactive menu with options
+diagnose-nodejs.bat  # Troubleshoot Node.js issues
+```
+
+**🔧 How to use separate servers:**
+1. **First Terminal:** Run `start-backend.bat`
+   - Backend will start on http://localhost:3001
+   - Keep this terminal open
    
-   또는 개별 실행:
+2. **Second Terminal:** Run `start-frontend.bat`  
+   - Frontend will start on http://localhost:3000
+   - Your browser will automatically open
+   
+3. **Access your portfolio:** http://localhost:3000
 
-3. **의존성 설치** (최초 1회)
-   ```cmd
-   install.bat
-   ```
+💡 **Why separate terminals?**
+- Better development experience
+- Independent server management
+- Easier debugging and monitoring
+- Can restart individual servers without affecting the other
 
-4. **백엔드 서버 실행** (첫 번째 터미널)
-   ```cmd
-   start-backend.bat
-   ```
+### 🏗️ Production Mode
 
-5. **프론트엔드 서버 실행** (두 번째 터미널)
-   ```cmd
-   start-frontend.bat
-   ```
+```bash
+# Build frontend
+npm run build
 
-6. **웹사이트 접속**
-   - 메인 웹사이트: http://localhost:3000
-   - 백엔드 API: http://localhost:3001
-   - 헬스체크: http://localhost:3001/health
+# Start production backend
+cd backend
+NODE_ENV=production npm start
+```
 
-## 🎮 실행 방법
+### 🧪 Testing & Verification
 
-### 📋 실행 스크립트 목록
+```bash
+# Verify installation
+npm run verify
 
-| 스크립트 | 아이콘 | 기능 | 설명 |
-|---------|------|------|------|
-| `quick-start.bat` | 🎯 | 대화형 실행 가이드 | 메뉴 선택으로 쉬운 실행 |
-| `install.bat` | 📦 | 의존성 설치 | 최초 1회 실행 필요 |
-| `start-backend.bat` | 🔧 | 백엔드 실행 | API 서버 시작 |
-| `start-frontend.bat` | 🎨 | 프론트엔드 실행 | 웹사이트 시작 |
-| `test-backend.bat` | 🧪 | 백엔드 테스트 | 서버 동작 테스트 |
+# Clean install test
+clean-install-test.bat   # Windows only
 
-### 🐳 Docker 실행
-```cmd
-# 개발 환경
+# Check for port conflicts
+npm run check-ports
+```
+
+## 🎨 Customization
+
+### 👤 Personal Information
+
+Edit your profile in `backend/src/controllers/profileController.js`:
+
+```javascript
+const profileData = {
+  // Basic Info - Update these with your details
+  name: 'Your Full Name',
+  title: 'Your Professional Title',
+  email: 'your.email@example.com',
+  phone: '+1-234-567-8900',
+  location: 'Your City, Country',
+  
+  // About You
+  description: `Write a compelling description about yourself...`,
+  
+  // Technical Skills
+  skills: [
+    'JavaScript', 'Python', 'React', 'Node.js',
+    'Docker', 'AWS', 'MongoDB', 'PostgreSQL',
+    // Add your skills here
+  ],
+  
+  // Areas of Interest
+  interests: [
+    'Web Development', 'Machine Learning', 'Cloud Computing',
+    // Add your interests here
+  ],
+  
+  // Social Media Links
+  socialLinks: {
+    github: 'https://github.com/yourusername',
+    linkedin: 'https://linkedin.com/in/yourusername',
+    instagram: 'https://instagram.com/yourusername',
+    email: 'mailto:your.email@example.com'
+  }
+};
+```
+
+### 🎨 Visual Customization
+
+**Colors & Themes** (`frontend/src/styles/App.css`):
+```css
+:root {
+  --primary-color: #3498db;     /* Main theme color */
+  --secondary-color: #2ecc71;   /* Accent color */
+  --accent-color: #e74c3c;      /* Highlight color */
+  /* Customize these colors */
+}
+```
+
+**Component Styles:**
+- `Header.css` - Navigation and header styling
+- `About.css` - About section and profile image
+- `Skills.css` - Skills grid and animations
+- `Contact.css` - Contact form and social links
+- `Footer.css` - Footer design
+
+### 🖼️ Profile Image
+
+1. **Add your image** to `frontend/public/images/`
+2. **Name it** `image.jpg` (or update the reference in `About.js`)
+3. **Recommended size**: 300x300px square
+4. **Supported formats**: JPG, PNG, GIF, WebP
+
+### 🌙 Dark Mode Configuration
+
+The dark mode toggle is automatic. Customize colors in `App.css`:
+```css
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  /* Customize dark theme colors */
+}
+```
+
+## 🐳 Docker Support
+
+### 🔧 Development with Docker
+
+```bash
+# Start development environment
 docker-compose up --build
 
-# 프로덕션 환경
+# Start with live reload
+docker-compose up --build --watch
+```
+
+### 🚀 Production with Docker
+
+```bash
+# Production deployment
 docker-compose -f docker-compose.prod.yml up --build
+
+# Background mode
+docker-compose -f docker-compose.prod.yml up -d --build
 ```
 
-### 🖥️ 수동 실행 (개발자용)
-```cmd
-# 백엔드 수동 실행
-cd backend
-set "PATH=C:\Program Files\nodejs;%PATH%"
-npm start
+### 📦 Individual Containers
 
-# 프론트엔드 수동 실행 (새 터미널)
+```bash
+# Backend only
+docker build -t portfolio-backend ./backend
+docker run -p 3001:3001 portfolio-backend
+
+# Frontend only
+docker build -t portfolio-frontend ./frontend
+docker run -p 3000:3000 portfolio-frontend
+```
+
+## 🔧 API Documentation
+
+### 🌐 Base URLs
+- **Development**: `http://localhost:3001`
+- **Production**: `https://your-domain.com`
+
+### 📋 Available Endpoints
+
+| Endpoint | Method | Description | Response |
+|----------|--------|-------------|----------|
+| `/` | GET | API information | Basic server info |
+| `/health` | GET | Health check | Server status & metrics |
+| `/api` | GET | API documentation | Available endpoints |
+| `/api/profile` | GET | Complete profile | Full profile data |
+| `/api/profile/skills` | GET | Skills only | Array of skills |
+| `/api/profile/contact` | GET | Contact info | Contact details |
+
+### 📝 Example Responses
+
+**Health Check (`GET /health`):**
+```json
+{
+  "status": "OK",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "uptime": 3600,
+  "memory": {
+    "rss": 45678592,
+    "heapTotal": 26738688,
+    "heapUsed": 18234576
+  }
+}
+```
+
+**Profile Data (`GET /api/profile`):**
+```json
+{
+  "success": true,
+  "data": {
+    "name": "Seungchan An",
+    "title": "AI Researcher & Full-Stack Developer",
+    "email": "vpraise@naver.com",
+    "skills": ["Python", "JavaScript", "React"],
+    "socialLinks": {
+      "github": "https://github.com/vpraise00"
+    }
+  },
+  "timestamp": "2024-01-01T00:00:00.000Z"
+}
+```
+
+## 🚀 Deployment
+
+### ☁️ Platform Options
+
+| Platform | Best For | Cost | Difficulty |
+|----------|----------|------|------------|
+| **Vercel** | Frontend only | Free tier | Easy |
+| **Netlify** | Static sites | Free tier | Easy |
+| **Heroku** | Full-stack | Free tier | Medium |
+| **AWS** | Production apps | Pay-as-go | Advanced |
+| **DigitalOcean** | VPS hosting | $5/month | Medium |
+
+### 🔧 Environment Variables
+
+Create `.env` in backend directory:
+```env
+# Server Configuration
+PORT=3001
+NODE_ENV=production
+
+# Security
+CORS_ORIGIN=https://your-domain.com
+HELMET_ENABLED=true
+
+# Logging
+LOG_LEVEL=error
+```
+
+### � Build Commands
+
+```bash
+# Frontend build
+cd frontend && npm run build
+
+# Backend start
+cd backend && npm start
+
+# Full build
+npm run build
+```
+
+## �🛠️ Troubleshooting
+
+### 🔍 Quick Diagnosis Tool
+
+**Windows users: If you're having Node.js issues, run this first:**
+```bash
+# Run the automated diagnosis tool
+diagnose-nodejs.bat
+```
+
+This tool will:
+- Check if Node.js is installed
+- Verify PATH configuration
+- Test common Node.js commands
+- Provide specific fix recommendations
+
+### 🔧 Enhanced Script Features
+
+Our batch files now include:
+- **Auto-detection** of Node.js in common installation paths
+- **Intelligent PATH fixing** for the current session
+- **Detailed error messages** with specific solutions
+- **Fallback mechanisms** when Node.js isn't in PATH
+
+### ❌ Common Issues & Solutions
+
+#### **"node is not recognized"**
+```bash
+# Solution: Install Node.js
+# 1. Download from https://nodejs.org/
+# 2. Install LTS version
+# 3. Restart computer
+# 4. Verify: node --version
+```
+
+#### **Port Already in Use**
+```bash
+# Check what's using the port
+netstat -ano | findstr :3000
+netstat -ano | findstr :3001
+
+# Kill the process (Windows)
+taskkill /PID [PID_NUMBER] /F
+
+# Kill the process (Linux/macOS)
+kill -9 [PID_NUMBER]
+```
+
+#### **Backend Connection Failed**
+```bash
+# 1. Check if backend is running
+curl http://localhost:3001/health
+
+# 2. Check firewall settings
+# 3. Verify port 3001 is not blocked
+
+# 4. Check logs in terminal for errors
+```
+
+#### **Dependencies Installation Failed**
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Delete and reinstall
+rm -rf node_modules package-lock.json
+npm install
+
+# Try with different registry
+npm install --registry https://registry.npmjs.org/
+```
+
+#### **React App Won't Start**
+```bash
+# Check Node.js version
+node --version  # Should be 16+
+
+# Clear React cache
+rm -rf node_modules/.cache
+
+# Reinstall React dependencies
 cd frontend
-set "PATH=C:\Program Files\nodejs;%PATH%"
+rm -rf node_modules package-lock.json
+npm install
+```
+
+#### **Windows Batch Files Issues**
+```bash
+# If start-backend.bat or start-frontend.bat don't work:
+
+# 1. Check Node.js installation
+diagnose-nodejs.bat
+
+# 2. If Node.js is installed but not detected:
+# - Close all Command Prompt windows
+# - Open new Command Prompt as Administrator
+# - Try running the script again
+
+# 3. Manual start (alternative):
+# For backend:
+cd backend
+"C:\Program Files\nodejs\npm.cmd" start
+
+# For frontend:
+cd frontend  
+"C:\Program Files\nodejs\npm.cmd" start
+```
+
+#### **Servers Won't Start Separately**
+```bash
+# Make sure to run in separate terminals:
+
+# Terminal 1 (Backend):
+start-backend.bat
+# Wait for "Backend Server Started!" message
+
+# Terminal 2 (Frontend):
+start-frontend.bat
+# Wait for "webpack compiled" message
+```
+
+### 🔍 Debug Mode
+
+```bash
+# Backend with debug logs
+cd backend
+DEBUG=* npm start
+
+# Frontend with verbose logging
+cd frontend
+VERBOSE=true npm start
+
+# Both with debug info
+DEBUG=* npm start
+```
+
+### 🆘 Getting Help
+
+1. **Check the logs** in your terminal for error messages
+2. **Verify prerequisites** (Node.js, npm versions)
+3. **Try clean installation** using `clean-install-test.bat`
+4. **Check GitHub Issues** for similar problems
+5. **Run verification** with `npm run verify`
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how to get started:
+
+### 🔧 Development Setup
+
+```bash
+# 1. Fork the repository on GitHub
+
+# 2. Clone your fork
+git clone https://github.com/YOUR_USERNAME/personal-portfolio.git
+cd personal-portfolio
+
+# 3. Install dependencies
+npm run install-all
+
+# 4. Create a feature branch
+git checkout -b feature/amazing-feature
+
+# 5. Make your changes and test
+npm start
+
+# 6. Commit your changes
+git commit -m 'Add some amazing feature'
+
+# 7. Push to your fork
+git push origin feature/amazing-feature
+
+# 8. Open a Pull Request
+```
+
+### 📝 Contribution Guidelines
+
+- **Code Style**: Follow existing code patterns
+- **Testing**: Test your changes thoroughly
+- **Documentation**: Update README if needed
+- **Commits**: Use clear, descriptive commit messages
+- **Pull Requests**: Provide detailed description of changes
+
+### 🐛 Bug Reports
+
+When reporting bugs, please include:
+- Operating system and version
+- Node.js and npm versions
+- Error messages (full text)
+- Steps to reproduce
+- Expected vs actual behavior
+
+### 💡 Feature Requests
+
+For new features, please:
+- Check existing issues first
+- Describe the use case
+- Explain why it would be valuable
+- Consider implementation complexity
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+### What this means:
+- ✅ **Use commercially**
+- ✅ **Modify freely** 
+- ✅ **Distribute copies**
+- ✅ **Include in private use**
+- ❗ **Include license notice**
+
+---
+
+## 👨‍💻 Author
+
+**Seungchan An**
+- 🌟 **GitHub**: [@vpraise00](https://github.com/vpraise00)
+- 📷 **Instagram**: [@vpraise_a](https://instagram.com/vpraise_a)
+- 💼 **LinkedIn**: [seungchan-an](https://www.linkedin.com/in/%EC%8A%B9%EC%B0%AC-%EC%95%88-8a317a373/)
+- � **Email**: vpraise@naver.com
+
+---
+
+## 🎯 Project Roadmap
+
+### ✅ **Completed Features**
+- [x] React frontend with dark mode
+- [x] Node.js backend with REST API
+- [x] Docker containerization
+- [x] Responsive design
+- [x] Interactive animations
+- [x] Automated setup scripts
+- [x] Comprehensive documentation
+
+### 🔄 **In Progress**
+- [ ] Unit test coverage
+- [ ] CI/CD pipeline setup
+- [ ] Performance optimizations
+- [ ] Accessibility improvements
+
+### 📋 **Future Enhancements**
+- [ ] Blog/Articles section
+- [ ] Contact form with email integration
+- [ ] Admin dashboard
+- [ ] Multi-language support
+- [ ] Analytics integration
+- [ ] SEO optimization
+- [ ] PWA features
+
+### 🚀 **Version History**
+- **v1.0.0** - Initial release with basic portfolio features
+- **v1.1.0** - Added dark mode and animations
+- **v1.2.0** - Docker support and deployment guides
+- **v1.3.0** - Enhanced error handling and verification tools
+
+---
+
+## 🌟 Acknowledgments
+
+- **React Team** - For the amazing frontend framework
+- **Express.js** - For the robust backend framework
+- **Node.js Community** - For the extensive ecosystem
+- **Open Source Contributors** - For inspiration and libraries
+- **GitHub** - For hosting and collaboration tools
+
+---
+
+<div align="center">
+
+### 🌟 If this project helped you, please give it a star! 🌟
+
+**Made with ❤️ by [Seungchan An](https://github.com/vpraise00)**
+
+[⬆ Back to Top](#-personal-portfolio-website)
+
+</div>
+
+## 🚀 Quick Start
+
+### Prerequisites
+- **Node.js** (v16 or higher) - [Download here](https://nodejs.org/)
+- **npm** (comes with Node.js)
+
+### One-Click Setup
+```bash
+# Clone the repository
+git clone https://github.com/your-username/personal-portfolio.git
+cd personal-portfolio
+
+# Run the quick start script (Windows)
+quick-start.bat
+
+# Or for manual installation (All platforms)
+npm run install-all
 npm start
 ```
 
-## 🎨 개인 정보 수정
+🎉 **That's it!** Your portfolio will be available at:
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3001
 
-### 📝 기본 정보 수정
-`backend/src/controllers/profileController.js` 파일을 편집하세요:
+## ✨ Features
+
+### 🎨 Frontend Features
+- **📱 Responsive Design** - Works on all devices
+- **🌙 Dark/Light Mode** - Toggle with system preference detection
+- **⚡ Interactive Animations** - Smooth transitions and hover effects
+- **🎯 Interactive Profile Image** - Physics-based animations and click effects
+- **� Real-time API Integration** - Dynamic data loading from backend
+- **⚠️ Error Handling** - Graceful fallbacks when backend is unavailable
+
+### 🔧 Backend Features
+- **🛡️ Security** - Helmet.js for security headers
+- **🌐 CORS Support** - Cross-origin resource sharing
+- **📊 Health Monitoring** - Health check and system information endpoints
+- **🔍 API Documentation** - Self-documenting API endpoints
+- **⚡ Performance** - Optimized for speed and efficiency
+- **🔄 Environment Configuration** - Flexible environment variables
+
+### 🏗️ Development Features
+- **🔧 Hot Reload** - Instant updates during development
+- **📦 Modular Architecture** - Easy to extend and maintain
+- **🐳 Docker Support** - Containerized deployment
+- **🔧 One-Click Scripts** - Automated setup and deployment
+- **📋 Comprehensive Logging** - Debug and monitor easily
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React** 18.2.0 - UI library
+- **Axios** - HTTP client
+- **CSS3** - Styling with CSS variables
+- **HTML5** - Semantic markup
+
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **Helmet.js** - Security middleware
+- **CORS** - Cross-origin resource sharing
+- **dotenv** - Environment variables
+
+### DevOps
+- **Docker** - Containerization
+- **npm** - Package management
+- **Git** - Version control
+
+## 📁 Project Structure
+
+```
+personal-portfolio/
+├── 📁 backend/                 # Node.js backend
+│   ├── 📁 src/
+│   │   ├── 📁 controllers/     # API controllers
+│   │   ├── 📁 routes/          # API routes
+│   │   └── 📄 server.js        # Main server file
+│   ├── 📄 package.json
+│   ├── 📄 .env                 # Environment variables
+│   └── 📄 Dockerfile
+├── 📁 frontend/                # React frontend
+│   ├── 📁 src/
+│   │   ├── 📁 components/      # React components
+│   │   ├── 📁 styles/          # CSS stylesheets
+│   │   ├── 📄 App.js           # Main app component
+│   │   └── 📄 index.js         # Entry point
+│   ├── 📁 public/
+│   │   ├── 📁 images/          # Static images
+│   │   └── 📄 index.html
+│   ├── 📄 package.json
+│   └── 📄 Dockerfile
+├── 📄 package.json             # Root package.json
+├── 📄 docker-compose.yml       # Docker configuration
+├── 📄 README.md                # This file
+├── 📄 .gitignore               # Git ignore rules
+└── 📁 scripts/                 # Automation scripts
+    ├── 📄 install.bat          # Dependencies installation
+    ├── 📄 quick-start.bat      # One-click startup
+    ├── 📄 start-backend.bat    # Backend server
+    └── 📄 start-frontend.bat   # Frontend server
+```
+
+## ⚙️ Installation
+
+### Method 1: Automated Installation (Recommended)
+```bash
+# Windows
+install.bat
+
+# Linux/macOS
+npm run install-all
+```
+
+### Method 2: Manual Installation
+```bash
+# Install root dependencies
+npm install
+
+# Install backend dependencies
+cd backend
+npm install
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
+
+## 🔧 Usage
+
+### Development Mode
+```bash
+# Start both servers (recommended)
+npm start
+
+# Or start individually
+npm run start-backend  # Backend only
+npm run start-frontend # Frontend only
+```
+
+### Production Mode
+```bash
+# Build frontend
+npm run build
+
+# Start production server
+NODE_ENV=production npm run start-backend
+```
+
+### Using Scripts (Windows)
+```bash
+quick-start.bat        # Start both servers
+start-backend.bat      # Backend only
+start-frontend.bat     # Frontend only
+```
+
+## 🎨 Customization
+
+### � Personal Information
+Edit `backend/src/controllers/profileController.js`:
 
 ```javascript
 const profileData = {
   name: '당신의 이름',                    // 👤 이름
   title: '당신의 직책',                   // 💼 직책
   email: 'your-email@example.com',      // 📧 이메일
+  location: 'Your Location',            // 🌍 위치
   description: '당신의 소개글...',        // � 소개
   skills: [                             // 🛠️ 기술 스택
     'JavaScript', 'React', 'Node.js',
@@ -243,175 +892,2236 @@ const profileData = {
 };
 ```
 
-### 🎨 스타일 수정
-`frontend/src/styles/` 폴더의 CSS 파일들을 수정하여 디자인을 변경하세요:
+### 🎨 Styling
+Customize the appearance by editing files in `frontend/src/styles/`:
 
-- `App.css` - 전체 앱 스타일 및 다크 모드 테마
-- `Header.css` - 헤더 및 네비게이션 (다크 모드 토글 포함)
-- `About.css` - 소개 섹션 및 프로필 이미지
-- `Skills.css` - 기술 스택 섹션
-- `Contact.css` - 연락처 섹션
-- `Footer.css` - 푸터
+- **App.css** - Global styles and themes
+- **Header.css** - Header and navigation
+- **About.css** - About section and profile image
+- **Skills.css** - Skills section
+- **Contact.css** - Contact section
+- **Footer.css** - Footer
 
-### 🖼️ 프로필 이미지 추가
-프로필 이미지를 추가하려면:
-1. `frontend/public/images/` 폴더에 이미지 파일을 넣으세요
-2. 파일명을 `image.jpg`로 지정하세요
-3. 권장 크기: 300x300 픽셀 (정사각형)
-4. 지원 형식: JPG, PNG, GIF, WebP
+### 🖼️ Profile Image
+1. Add your image to `frontend/public/images/`
+2. Rename it to `image.jpg` (or update the reference in About.js)
+3. Recommended size: 300x300px
+4. Supported formats: JPG, PNG, GIF, WebP
 
-### 🌙 다크 모드 기능
-- 헤더 우측의 🌙/☀️ 버튼을 클릭하여 다크 모드를 전환할 수 있습니다
-- 사용자의 선호도는 브라우저에 자동 저장됩니다
-- 모든 컴포넌트가 다크 모드를 지원합니다
+### 🌙 Dark Mode
+The dark mode toggle is in the header. Colors are controlled by CSS variables in `App.css`.
 
-### 🎾 인터랙티브 프로필 이미지
-- **마우스 추적**: 마우스 움직임에 따라 프로필 이미지가 미묘하게 반응합니다
-- **물리 애니메이션**: 프로필 이미지를 클릭하면 물리 법칙을 따르는 공처럼 움직입니다
-  - 🌍 **중력**: 아래쪽으로 떨어지는 중력 효과
-  - 🔄 **마찰력**: 바닥에서의 마찰과 공기 저항
-  - ⚡ **충돌 반발**: 벽면과의 충돌 시 에너지 손실과 함께 튕겨나옴
-  - 🚀 **사용자 상호작용**: 물리 모드에서 이미지 클릭 시 상향력과 랜덤 좌우력 적용
-  - ✨ **클릭 이펙트**: 클릭할 때마다 리플 효과와 스파크 애니메이션
-  - 🛑 **종료**: 더블클릭 또는 ESC 키로 물리 모드 해제
-- **시각적 효과**: 호버 시 글로우 효과, 펄스 애니메이션, 그라디언트 테두리
+## 🐳 Docker Support
 
-## 🛠️ 트러블슈팅
-
-### 🚨 Windows 인코딩 문제
-
-#### ❌ 배치 파일 실행 시 한글이 깨져서 나타남
-
-**원인**: Windows 명령 프롬프트의 인코딩 문제
-
-**해결완료**: 모든 배치 파일을 영어로 변경하여 해결됨
-- ✅ `quick-start.bat` - 영어 메시지로 변경
-- ✅ `install.bat` - 영어 메시지로 변경  
-- ✅ `start-backend.bat` - 영어 메시지로 변경
-- ✅ `start-frontend.bat` - 영어 메시지로 변경
-- ✅ `test-backend.bat` - 영어 메시지로 변경
-
-### 🚨 Node.js 관련 문제
-
-#### ❌ 'node' is not recognized as an internal or external command
-
-**원인**: Node.js가 설치되지 않았거나 시스템 PATH에 등록되지 않음
-
-**해결방법**:
-1. **Node.js 설치 확인**
-   - https://nodejs.org/ 에서 LTS 버전 다운로드
-   - 설치 시 "Add to PATH" 옵션 체크
-
-2. **PATH 문제 해결**
-   ```cmd
-   # 명령 프롬프트 종료 후 다시 실행
-   # 또는 컴퓨터 재시작
-   
-   # 수동 PATH 추가:
-   # 내 PC → 속성 → 고급 시스템 설정 → 환경 변수
-   # → 시스템 변수 → Path → 편집 → 새로 만들기
-   # → C:\Program Files\nodejs 추가
-   ```
-
-3. **설치 확인**
-   ```cmd
-   node --version
-   npm --version
-   ```
-
-### 🔌 포트 관련 문제
-
-#### ❌ 포트가 이미 사용중입니다
-
-**확인 방법**:
-```cmd
-netstat -ano | findstr :3000
-netstat -ano | findstr :3001
-```
-
-**해결방법**:
-```cmd
-# 프로세스 ID 확인 후 종료
-taskkill /PID [프로세스ID] /F
-```
-
-### 📦 의존성 설치 실패
-
-#### ❌ npm install 실패
-
-**해결방법**:
-```cmd
-# npm 캐시 정리
-npm cache clean --force
-
-# 재설치
-npm install
-
-# 또는 node_modules 삭제 후 재설치
-rmdir /s node_modules
-npm install
-```
-
-### � Docker 관련 문제
-
-#### ❌ Docker Desktop이 실행되지 않음
-
-**해결방법**:
-- Docker Desktop 설치 및 실행 확인
-- WSL 2 설정 확인 (Windows)
-- 관리자 권한으로 실행
-
-## 🚀 배포
-
-### 🐳 Docker Hub 배포
+### Development
 ```bash
-# 이미지 빌드
-docker build -t your-username/portfolio-frontend ./frontend
-docker build -t your-username/portfolio-backend ./backend
-
-# 이미지 푸시
-docker push your-username/portfolio-frontend
-docker push your-username/portfolio-backend
+docker-compose up --build
 ```
 
-### ☁️ 클라우드 배포 옵션
+### Production
+```bash
+docker-compose -f docker-compose.prod.yml up --build
+```
+
+### Individual Services
+```bash
+# Backend only
+docker build -t portfolio-backend ./backend
+docker run -p 3001:3001 portfolio-backend
+
+# Frontend only
+docker build -t portfolio-frontend ./frontend
+docker run -p 3000:3000 portfolio-frontend
+```
+
+## 🔧 API Documentation
+
+### Base URL
+- Development: `http://localhost:3001`
+- Production: `https://your-domain.com`
+
+### Endpoints
+
+#### GET /
+Basic API information
+```json
+{
+  "message": "Portfolio Backend API Server",
+  "version": "1.0.0",
+  "status": "running"
+}
+```
+
+#### GET /health
+Health check endpoint
+```json
+{
+  "status": "OK",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "uptime": 3600,
+  "memory": {...}
+}
+```
+
+#### GET /api/profile
+Get complete profile information
+```json
+{
+  "success": true,
+  "data": {
+    "name": "Seungchan An",
+    "title": "AI Researcher",
+    "email": "vpraise@naver.com",
+    "description": "...",
+    "skills": [...],
+    "interests": [...],
+    "socialLinks": {...}
+  }
+}
+```
+
+#### GET /api/profile/skills
+Get skills only
+```json
+{
+  "success": true,
+  "data": ["Python", "JavaScript", "React", "..."]
+}
+```
+
+#### GET /api/profile/contact
+Get contact information only
+```json
+{
+  "success": true,
+  "data": {
+    "email": "vpraise@naver.com",
+    "socialLinks": {...}
+  }
+}
+```
+
+## 🚀 Deployment
+
+### Platform Options
 - **AWS EC2, ECS** - 가상 서버 또는 컨테이너 서비스
 - **Google Cloud Platform** - GCE, Cloud Run
 - **Heroku** - 간편한 PaaS 플랫폼
 - **Vercel** - 프론트엔드 배포 전용
 - **Netlify** - 정적 사이트 호스팅
 
-## 📄 라이선스
+### Environment Variables
+Create `.env` file in backend directory:
+```env
+PORT=3001
+NODE_ENV=production
+CORS_ORIGIN=https://your-domain.com
+```
 
-MIT License - 자유롭게 사용, 수정, 배포 가능
+### Build Commands
+```bash
+# Frontend build
+cd frontend && npm run build
 
-## 👨‍💻 개발자
+# Backend start
+cd backend && npm start
+```
 
-**Seungchan An**
-- 🐙 GitHub: https://github.com/seungchan-an
-- 📷 Instagram: https://instagram.com/seungchan.an
-- 💼 LinkedIn: https://linkedin.com/in/seungchan-an
+## 🛠️ Troubleshooting
+
+### 🔍 Quick Diagnosis Tool
+
+**Windows users: If you're having Node.js issues, run this first:**
+```bash
+# Run the automated diagnosis tool
+diagnose-nodejs.bat
+```
+
+This tool will:
+- Check if Node.js is installed
+- Verify PATH configuration
+- Test common Node.js commands
+- Provide specific fix recommendations
+
+### 🔧 Enhanced Script Features
+
+Our batch files now include:
+- **Auto-detection** of Node.js in common installation paths
+- **Intelligent PATH fixing** for the current session
+- **Detailed error messages** with specific solutions
+- **Fallback mechanisms** when Node.js isn't in PATH
+
+### ❌ Common Issues & Solutions
+
+#### **"node is not recognized"**
+```bash
+# Solution: Install Node.js
+# 1. Download from https://nodejs.org/
+# 2. Install LTS version
+# 3. Restart computer
+# 4. Verify: node --version
+```
+
+#### **Port Already in Use**
+```bash
+# Check what's using the port
+netstat -ano | findstr :3000
+netstat -ano | findstr :3001
+
+# Kill the process (Windows)
+taskkill /PID [PID_NUMBER] /F
+
+# Kill the process (Linux/macOS)
+kill -9 [PID_NUMBER]
+```
+
+#### **Backend Connection Failed**
+```bash
+# 1. Check if backend is running
+curl http://localhost:3001/health
+
+# 2. Check firewall settings
+# 3. Verify port 3001 is not blocked
+
+# 4. Check logs in terminal for errors
+```
+
+#### **Dependencies Installation Failed**
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Delete and reinstall
+rm -rf node_modules package-lock.json
+npm install
+
+# Try with different registry
+npm install --registry https://registry.npmjs.org/
+```
+
+#### **React App Won't Start**
+```bash
+# Check Node.js version
+node --version  # Should be 16+
+
+# Clear React cache
+rm -rf node_modules/.cache
+
+# Reinstall React dependencies
+cd frontend
+rm -rf node_modules package-lock.json
+npm install
+```
+
+#### **Windows Batch Files Issues**
+```bash
+# If start-backend.bat or start-frontend.bat don't work:
+
+# 1. Check Node.js installation
+diagnose-nodejs.bat
+
+# 2. If Node.js is installed but not detected:
+# - Close all Command Prompt windows
+# - Open new Command Prompt as Administrator
+# - Try running the script again
+
+# 3. Manual start (alternative):
+# For backend:
+cd backend
+"C:\Program Files\nodejs\npm.cmd" start
+
+# For frontend:
+cd frontend  
+"C:\Program Files\nodejs\npm.cmd" start
+```
+
+#### **Servers Won't Start Separately**
+```bash
+# Make sure to run in separate terminals:
+
+# Terminal 1 (Backend):
+start-backend.bat
+# Wait for "Backend Server Started!" message
+
+# Terminal 2 (Frontend):
+start-frontend.bat
+# Wait for "webpack compiled" message
+```
+
+### 🔍 Debug Mode
+
+```bash
+# Backend with debug logs
+cd backend
+DEBUG=* npm start
+
+# Frontend with verbose logging
+cd frontend
+VERBOSE=true npm start
+
+# Both with debug info
+DEBUG=* npm start
+```
+
+### 🆘 Getting Help
+
+1. **Check the logs** in your terminal for error messages
+2. **Verify prerequisites** (Node.js, npm versions)
+3. **Try clean installation** using `clean-install-test.bat`
+4. **Check GitHub Issues** for similar problems
+5. **Run verification** with `npm run verify`
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how to get started:
+
+### 🔧 Development Setup
+
+```bash
+# 1. Fork the repository on GitHub
+
+# 2. Clone your fork
+git clone https://github.com/YOUR_USERNAME/personal-portfolio.git
+cd personal-portfolio
+
+# 3. Install dependencies
+npm run install-all
+
+# 4. Create a feature branch
+git checkout -b feature/amazing-feature
+
+# 5. Make your changes and test
+npm start
+
+# 6. Commit your changes
+git commit -m 'Add some amazing feature'
+
+# 7. Push to your fork
+git push origin feature/amazing-feature
+
+# 8. Open a Pull Request
+```
+
+### 📝 Contribution Guidelines
+
+- **Code Style**: Follow existing code patterns
+- **Testing**: Test your changes thoroughly
+- **Documentation**: Update README if needed
+- **Commits**: Use clear, descriptive commit messages
+- **Pull Requests**: Provide detailed description of changes
+
+### 🐛 Bug Reports
+
+When reporting bugs, please include:
+- Operating system and version
+- Node.js and npm versions
+- Error messages (full text)
+- Steps to reproduce
+- Expected vs actual behavior
+
+### 💡 Feature Requests
+
+For new features, please:
+- Check existing issues first
+- Describe the use case
+- Explain why it would be valuable
+- Consider implementation complexity
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+### What this means:
+- ✅ **Use commercially**
+- ✅ **Modify freely** 
+- ✅ **Distribute copies**
+- ✅ **Include in private use**
+- ❗ **Include license notice**
 
 ---
 
-## 🎯 프로젝트 요약
+## 👨‍💻 Author
 
-### ✅ 완성된 기능
-- **프론트엔드** - React 기반 반응형 웹사이트
-- **백엔드** - Node.js/Express API 서버
-- **Docker** - 컨테이너화된 배포 환경
-- **자동화** - 원클릭 설치 및 실행 스크립트
+**Seungchan An**
+- 🌟 **GitHub**: [@vpraise00](https://github.com/vpraise00)
+- 📷 **Instagram**: [@vpraise_a](https://instagram.com/vpraise_a)
+- 💼 **LinkedIn**: [seungchan-an](https://www.linkedin.com/in/%EC%8A%B9%EC%B0%AC-%EC%95%88-8a317a373/)
+- � **Email**: vpraise@naver.com
 
-### 🔧 기술적 특징
-- **가상환경 불필요** - Node.js의 package.json으로 의존성 관리
-- **격리된 환경** - 각 프로젝트별 node_modules로 자동 격리
-- **크로스 플랫폼** - Windows, Mac, Linux 지원
-- **확장 가능** - 모듈화된 구조로 쉬운 기능 추가
+---
 
-### 🎨 커스터마이징 가능
-- **개인 정보** - 이름, 직책, 소개글, 기술 스택
-- **소셜 링크** - GitHub, Instagram, LinkedIn 등
-- **디자인** - CSS 파일 수정으로 스타일 변경
-- **기능 추가** - React 컴포넌트 추가로 새 섹션 생성
+## 🎯 Project Roadmap
 
-**🎉 이제 `quick-start.bat`을 실행하여 나만의 포트폴리오 웹사이트를 시작해보세요!**
+### ✅ **Completed Features**
+- [x] React frontend with dark mode
+- [x] Node.js backend with REST API
+- [x] Docker containerization
+- [x] Responsive design
+- [x] Interactive animations
+- [x] Automated setup scripts
+- [x] Comprehensive documentation
+
+### 🔄 **In Progress**
+- [ ] Unit test coverage
+- [ ] CI/CD pipeline setup
+- [ ] Performance optimizations
+- [ ] Accessibility improvements
+
+### 📋 **Future Enhancements**
+- [ ] Blog/Articles section
+- [ ] Contact form with email integration
+- [ ] Admin dashboard
+- [ ] Multi-language support
+- [ ] Analytics integration
+- [ ] SEO optimization
+- [ ] PWA features
+
+### 🚀 **Version History**
+- **v1.0.0** - Initial release with basic portfolio features
+- **v1.1.0** - Added dark mode and animations
+- **v1.2.0** - Docker support and deployment guides
+- **v1.3.0** - Enhanced error handling and verification tools
+
+---
+
+## 🌟 Acknowledgments
+
+- **React Team** - For the amazing frontend framework
+- **Express.js** - For the robust backend framework
+- **Node.js Community** - For the extensive ecosystem
+- **Open Source Contributors** - For inspiration and libraries
+- **GitHub** - For hosting and collaboration tools
+
+---
+
+<div align="center">
+
+### 🌟 If this project helped you, please give it a star! 🌟
+
+**Made with ❤️ by [Seungchan An](https://github.com/vpraise00)**
+
+[⬆ Back to Top](#-personal-portfolio-website)
+
+</div>
+
+## 🚀 Quick Start
+
+### Prerequisites
+- **Node.js** (v16 or higher) - [Download here](https://nodejs.org/)
+- **npm** (comes with Node.js)
+
+### One-Click Setup
+```bash
+# Clone the repository
+git clone https://github.com/your-username/personal-portfolio.git
+cd personal-portfolio
+
+# Run the quick start script (Windows)
+quick-start.bat
+
+# Or for manual installation (All platforms)
+npm run install-all
+npm start
+```
+
+🎉 **That's it!** Your portfolio will be available at:
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3001
+
+## ✨ Features
+
+### 🎨 Frontend Features
+- **📱 Responsive Design** - Works on all devices
+- **🌙 Dark/Light Mode** - Toggle with system preference detection
+- **⚡ Interactive Animations** - Smooth transitions and hover effects
+- **🎯 Interactive Profile Image** - Physics-based animations and click effects
+- **� Real-time API Integration** - Dynamic data loading from backend
+- **⚠️ Error Handling** - Graceful fallbacks when backend is unavailable
+
+### 🔧 Backend Features
+- **🛡️ Security** - Helmet.js for security headers
+- **🌐 CORS Support** - Cross-origin resource sharing
+- **📊 Health Monitoring** - Health check and system information endpoints
+- **🔍 API Documentation** - Self-documenting API endpoints
+- **⚡ Performance** - Optimized for speed and efficiency
+- **🔄 Environment Configuration** - Flexible environment variables
+
+### 🏗️ Development Features
+- **🔧 Hot Reload** - Instant updates during development
+- **📦 Modular Architecture** - Easy to extend and maintain
+- **🐳 Docker Support** - Containerized deployment
+- **🔧 One-Click Scripts** - Automated setup and deployment
+- **📋 Comprehensive Logging** - Debug and monitor easily
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React** 18.2.0 - UI library
+- **Axios** - HTTP client
+- **CSS3** - Styling with CSS variables
+- **HTML5** - Semantic markup
+
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **Helmet.js** - Security middleware
+- **CORS** - Cross-origin resource sharing
+- **dotenv** - Environment variables
+
+### DevOps
+- **Docker** - Containerization
+- **npm** - Package management
+- **Git** - Version control
+
+## 📁 Project Structure
+
+```
+personal-portfolio/
+├── 📁 backend/                 # Node.js backend
+│   ├── 📁 src/
+│   │   ├── 📁 controllers/     # API controllers
+│   │   ├── 📁 routes/          # API routes
+│   │   └── 📄 server.js        # Main server file
+│   ├── 📄 package.json
+│   ├── 📄 .env                 # Environment variables
+│   └── 📄 Dockerfile
+├── 📁 frontend/                # React frontend
+│   ├── 📁 src/
+│   │   ├── 📁 components/      # React components
+│   │   ├── 📁 styles/          # CSS stylesheets
+│   │   ├── 📄 App.js           # Main app component
+│   │   └── 📄 index.js         # Entry point
+│   ├── 📁 public/
+│   │   ├── 📁 images/          # Static images
+│   │   └── 📄 index.html
+│   ├── 📄 package.json
+│   └── 📄 Dockerfile
+├── 📄 package.json             # Root package.json
+├── 📄 docker-compose.yml       # Docker configuration
+├── 📄 README.md                # This file
+├── 📄 .gitignore               # Git ignore rules
+└── 📁 scripts/                 # Automation scripts
+    ├── 📄 install.bat          # Dependencies installation
+    ├── 📄 quick-start.bat      # One-click startup
+    ├── 📄 start-backend.bat    # Backend server
+    └── 📄 start-frontend.bat   # Frontend server
+```
+
+## ⚙️ Installation
+
+### Method 1: Automated Installation (Recommended)
+```bash
+# Windows
+install.bat
+
+# Linux/macOS
+npm run install-all
+```
+
+### Method 2: Manual Installation
+```bash
+# Install root dependencies
+npm install
+
+# Install backend dependencies
+cd backend
+npm install
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
+
+## 🔧 Usage
+
+### Development Mode
+```bash
+# Start both servers (recommended)
+npm start
+
+# Or start individually
+npm run start-backend  # Backend only
+npm run start-frontend # Frontend only
+```
+
+### Production Mode
+```bash
+# Build frontend
+npm run build
+
+# Start production server
+NODE_ENV=production npm run start-backend
+```
+
+### Using Scripts (Windows)
+```bash
+quick-start.bat        # Start both servers
+start-backend.bat      # Backend only
+start-frontend.bat     # Frontend only
+```
+
+## 🎨 Customization
+
+### � Personal Information
+Edit `backend/src/controllers/profileController.js`:
+
+```javascript
+const profileData = {
+  name: '당신의 이름',                    // 👤 이름
+  title: '당신의 직책',                   // 💼 직책
+  email: 'your-email@example.com',      // 📧 이메일
+  location: 'Your Location',            // 🌍 위치
+  description: '당신의 소개글...',        // � 소개
+  skills: [                             // 🛠️ 기술 스택
+    'JavaScript', 'React', 'Node.js',
+    'Python', 'Docker', 'AWS'
+  ],
+  socialLinks: {                        // 🔗 소셜 링크
+    github: 'https://github.com/your-username',
+    instagram: 'https://instagram.com/your-username',
+    linkedin: 'https://linkedin.com/in/your-username'
+  }
+};
+```
+
+### 🎨 Styling
+Customize the appearance by editing files in `frontend/src/styles/`:
+
+- **App.css** - Global styles and themes
+- **Header.css** - Header and navigation
+- **About.css** - About section and profile image
+- **Skills.css** - Skills section
+- **Contact.css** - Contact section
+- **Footer.css** - Footer
+
+### 🖼️ Profile Image
+1. Add your image to `frontend/public/images/`
+2. Rename it to `image.jpg` (or update the reference in About.js)
+3. Recommended size: 300x300px
+4. Supported formats: JPG, PNG, GIF, WebP
+
+### 🌙 Dark Mode
+The dark mode toggle is in the header. Colors are controlled by CSS variables in `App.css`.
+
+## 🐳 Docker Support
+
+### Development
+```bash
+docker-compose up --build
+```
+
+### Production
+```bash
+docker-compose -f docker-compose.prod.yml up --build
+```
+
+### Individual Services
+```bash
+# Backend only
+docker build -t portfolio-backend ./backend
+docker run -p 3001:3001 portfolio-backend
+
+# Frontend only
+docker build -t portfolio-frontend ./frontend
+docker run -p 3000:3000 portfolio-frontend
+```
+
+## 🔧 API Documentation
+
+### Base URL
+- Development: `http://localhost:3001`
+- Production: `https://your-domain.com`
+
+### Endpoints
+
+#### GET /
+Basic API information
+```json
+{
+  "message": "Portfolio Backend API Server",
+  "version": "1.0.0",
+  "status": "running"
+}
+```
+
+#### GET /health
+Health check endpoint
+```json
+{
+  "status": "OK",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "uptime": 3600,
+  "memory": {...}
+}
+```
+
+#### GET /api/profile
+Get complete profile information
+```json
+{
+  "success": true,
+  "data": {
+    "name": "Seungchan An",
+    "title": "AI Researcher",
+    "email": "vpraise@naver.com",
+    "description": "...",
+    "skills": [...],
+    "interests": [...],
+    "socialLinks": {...}
+  }
+}
+```
+
+#### GET /api/profile/skills
+Get skills only
+```json
+{
+  "success": true,
+  "data": ["Python", "JavaScript", "React", "..."]
+}
+```
+
+#### GET /api/profile/contact
+Get contact information only
+```json
+{
+  "success": true,
+  "data": {
+    "email": "vpraise@naver.com",
+    "socialLinks": {...}
+  }
+}
+```
+
+## 🚀 Deployment
+
+### ☁️ Platform Options
+
+| Platform | Best For | Cost | Difficulty |
+|----------|----------|------|------------|
+| **Vercel** | Frontend only | Free tier | Easy |
+| **Netlify** | Static sites | Free tier | Easy |
+| **Heroku** | Full-stack | Free tier | Medium |
+| **AWS** | Production apps | Pay-as-go | Advanced |
+| **DigitalOcean** | VPS hosting | $5/month | Medium |
+
+### 🔧 Environment Variables
+
+Create `.env` in backend directory:
+```env
+# Server Configuration
+PORT=3001
+NODE_ENV=production
+
+# Security
+CORS_ORIGIN=https://your-domain.com
+HELMET_ENABLED=true
+
+# Logging
+LOG_LEVEL=error
+```
+
+### � Build Commands
+
+```bash
+# Frontend build
+cd frontend && npm run build
+
+# Backend start
+cd backend && npm start
+
+# Full build
+npm run build
+```
+
+## �🛠️ Troubleshooting
+
+### 🔍 Quick Diagnosis Tool
+
+**Windows users: If you're having Node.js issues, run this first:**
+```bash
+# Run the automated diagnosis tool
+diagnose-nodejs.bat
+```
+
+This tool will:
+- Check if Node.js is installed
+- Verify PATH configuration
+- Test common Node.js commands
+- Provide specific fix recommendations
+
+### 🔧 Enhanced Script Features
+
+Our batch files now include:
+- **Auto-detection** of Node.js in common installation paths
+- **Intelligent PATH fixing** for the current session
+- **Detailed error messages** with specific solutions
+- **Fallback mechanisms** when Node.js isn't in PATH
+
+### ❌ Common Issues & Solutions
+
+#### **"node is not recognized"**
+```bash
+# Solution: Install Node.js
+# 1. Download from https://nodejs.org/
+# 2. Install LTS version
+# 3. Restart computer
+# 4. Verify: node --version
+```
+
+#### **Port Already in Use**
+```bash
+# Check what's using the port
+netstat -ano | findstr :3000
+netstat -ano | findstr :3001
+
+# Kill the process (Windows)
+taskkill /PID [PID_NUMBER] /F
+
+# Kill the process (Linux/macOS)
+kill -9 [PID_NUMBER]
+```
+
+#### **Backend Connection Failed**
+```bash
+# 1. Check if backend is running
+curl http://localhost:3001/health
+
+# 2. Check firewall settings
+# 3. Verify port 3001 is not blocked
+
+# 4. Check logs in terminal for errors
+```
+
+#### **Dependencies Installation Failed**
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Delete and reinstall
+rm -rf node_modules package-lock.json
+npm install
+
+# Try with different registry
+npm install --registry https://registry.npmjs.org/
+```
+
+#### **React App Won't Start**
+```bash
+# Check Node.js version
+node --version  # Should be 16+
+
+# Clear React cache
+rm -rf node_modules/.cache
+
+# Reinstall React dependencies
+cd frontend
+rm -rf node_modules package-lock.json
+npm install
+```
+
+#### **Windows Batch Files Issues**
+```bash
+# If start-backend.bat or start-frontend.bat don't work:
+
+# 1. Check Node.js installation
+diagnose-nodejs.bat
+
+# 2. If Node.js is installed but not detected:
+# - Close all Command Prompt windows
+# - Open new Command Prompt as Administrator
+# - Try running the script again
+
+# 3. Manual start (alternative):
+# For backend:
+cd backend
+"C:\Program Files\nodejs\npm.cmd" start
+
+# For frontend:
+cd frontend  
+"C:\Program Files\nodejs\npm.cmd" start
+```
+
+#### **Servers Won't Start Separately**
+```bash
+# Make sure to run in separate terminals:
+
+# Terminal 1 (Backend):
+start-backend.bat
+# Wait for "Backend Server Started!" message
+
+# Terminal 2 (Frontend):
+start-frontend.bat
+# Wait for "webpack compiled" message
+```
+
+### 🔍 Debug Mode
+
+```bash
+# Backend with debug logs
+cd backend
+DEBUG=* npm start
+
+# Frontend with verbose logging
+cd frontend
+VERBOSE=true npm start
+
+# Both with debug info
+DEBUG=* npm start
+```
+
+### 🆘 Getting Help
+
+1. **Check the logs** in your terminal for error messages
+2. **Verify prerequisites** (Node.js, npm versions)
+3. **Try clean installation** using `clean-install-test.bat`
+4. **Check GitHub Issues** for similar problems
+5. **Run verification** with `npm run verify`
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how to get started:
+
+### 🔧 Development Setup
+
+```bash
+# 1. Fork the repository on GitHub
+
+# 2. Clone your fork
+git clone https://github.com/YOUR_USERNAME/personal-portfolio.git
+cd personal-portfolio
+
+# 3. Install dependencies
+npm run install-all
+
+# 4. Create a feature branch
+git checkout -b feature/amazing-feature
+
+# 5. Make your changes and test
+npm start
+
+# 6. Commit your changes
+git commit -m 'Add some amazing feature'
+
+# 7. Push to your fork
+git push origin feature/amazing-feature
+
+# 8. Open a Pull Request
+```
+
+### 📝 Contribution Guidelines
+
+- **Code Style**: Follow existing code patterns
+- **Testing**: Test your changes thoroughly
+- **Documentation**: Update README if needed
+- **Commits**: Use clear, descriptive commit messages
+- **Pull Requests**: Provide detailed description of changes
+
+### 🐛 Bug Reports
+
+When reporting bugs, please include:
+- Operating system and version
+- Node.js and npm versions
+- Error messages (full text)
+- Steps to reproduce
+- Expected vs actual behavior
+
+### 💡 Feature Requests
+
+For new features, please:
+- Check existing issues first
+- Describe the use case
+- Explain why it would be valuable
+- Consider implementation complexity
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+### What this means:
+- ✅ **Use commercially**
+- ✅ **Modify freely** 
+- ✅ **Distribute copies**
+- ✅ **Include in private use**
+- ❗ **Include license notice**
+
+---
+
+## 👨‍💻 Author
+
+**Seungchan An**
+- 🌟 **GitHub**: [@vpraise00](https://github.com/vpraise00)
+- 📷 **Instagram**: [@vpraise_a](https://instagram.com/vpraise_a)
+- 💼 **LinkedIn**: [seungchan-an](https://www.linkedin.com/in/%EC%8A%B9%EC%B0%AC-%EC%95%88-8a317a373/)
+- � **Email**: vpraise@naver.com
+
+---
+
+## 🎯 Project Roadmap
+
+### ✅ **Completed Features**
+- [x] React frontend with dark mode
+- [x] Node.js backend with REST API
+- [x] Docker containerization
+- [x] Responsive design
+- [x] Interactive animations
+- [x] Automated setup scripts
+- [x] Comprehensive documentation
+
+### 🔄 **In Progress**
+- [ ] Unit test coverage
+- [ ] CI/CD pipeline setup
+- [ ] Performance optimizations
+- [ ] Accessibility improvements
+
+### 📋 **Future Enhancements**
+- [ ] Blog/Articles section
+- [ ] Contact form with email integration
+- [ ] Admin dashboard
+- [ ] Multi-language support
+- [ ] Analytics integration
+- [ ] SEO optimization
+- [ ] PWA features
+
+### 🚀 **Version History**
+- **v1.0.0** - Initial release with basic portfolio features
+- **v1.1.0** - Added dark mode and animations
+- **v1.2.0** - Docker support and deployment guides
+- **v1.3.0** - Enhanced error handling and verification tools
+
+---
+
+## 🌟 Acknowledgments
+
+- **React Team** - For the amazing frontend framework
+- **Express.js** - For the robust backend framework
+- **Node.js Community** - For the extensive ecosystem
+- **Open Source Contributors** - For inspiration and libraries
+- **GitHub** - For hosting and collaboration tools
+
+---
+
+<div align="center">
+
+### 🌟 If this project helped you, please give it a star! 🌟
+
+**Made with ❤️ by [Seungchan An](https://github.com/vpraise00)**
+
+[⬆ Back to Top](#-personal-portfolio-website)
+
+</div>
+
+## 🚀 Quick Start
+
+### Prerequisites
+- **Node.js** (v16 or higher) - [Download here](https://nodejs.org/)
+- **npm** (comes with Node.js)
+
+### One-Click Setup
+```bash
+# Clone the repository
+git clone https://github.com/your-username/personal-portfolio.git
+cd personal-portfolio
+
+# Run the quick start script (Windows)
+quick-start.bat
+
+# Or for manual installation (All platforms)
+npm run install-all
+npm start
+```
+
+🎉 **That's it!** Your portfolio will be available at:
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3001
+
+## ✨ Features
+
+### 🎨 Frontend Features
+- **📱 Responsive Design** - Works on all devices
+- **🌙 Dark/Light Mode** - Toggle with system preference detection
+- **⚡ Interactive Animations** - Smooth transitions and hover effects
+- **🎯 Interactive Profile Image** - Physics-based animations and click effects
+- **� Real-time API Integration** - Dynamic data loading from backend
+- **⚠️ Error Handling** - Graceful fallbacks when backend is unavailable
+
+### 🔧 Backend Features
+- **🛡️ Security** - Helmet.js for security headers
+- **🌐 CORS Support** - Cross-origin resource sharing
+- **📊 Health Monitoring** - Health check and system information endpoints
+- **🔍 API Documentation** - Self-documenting API endpoints
+- **⚡ Performance** - Optimized for speed and efficiency
+- **🔄 Environment Configuration** - Flexible environment variables
+
+### 🏗️ Development Features
+- **🔧 Hot Reload** - Instant updates during development
+- **📦 Modular Architecture** - Easy to extend and maintain
+- **🐳 Docker Support** - Containerized deployment
+- **🔧 One-Click Scripts** - Automated setup and deployment
+- **📋 Comprehensive Logging** - Debug and monitor easily
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React** 18.2.0 - UI library
+- **Axios** - HTTP client
+- **CSS3** - Styling with CSS variables
+- **HTML5** - Semantic markup
+
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **Helmet.js** - Security middleware
+- **CORS** - Cross-origin resource sharing
+- **dotenv** - Environment variables
+
+### DevOps
+- **Docker** - Containerization
+- **npm** - Package management
+- **Git** - Version control
+
+## 📁 Project Structure
+
+```
+personal-portfolio/
+├── 📁 backend/                 # Node.js backend
+│   ├── 📁 src/
+│   │   ├── 📁 controllers/     # API controllers
+│   │   ├── 📁 routes/          # API routes
+│   │   └── 📄 server.js        # Main server file
+│   ├── 📄 package.json
+│   ├── 📄 .env                 # Environment variables
+│   └── 📄 Dockerfile
+├── 📁 frontend/                # React frontend
+│   ├── 📁 src/
+│   │   ├── 📁 components/      # React components
+│   │   ├── 📁 styles/          # CSS stylesheets
+│   │   ├── 📄 App.js           # Main app component
+│   │   └── 📄 index.js         # Entry point
+│   ├── 📁 public/
+│   │   ├── 📁 images/          # Static images
+│   │   └── 📄 index.html
+│   ├── 📄 package.json
+│   └── 📄 Dockerfile
+├── 📄 package.json             # Root package.json
+├── 📄 docker-compose.yml       # Docker configuration
+├── 📄 README.md                # This file
+├── 📄 .gitignore               # Git ignore rules
+└── 📁 scripts/                 # Automation scripts
+    ├── 📄 install.bat          # Dependencies installation
+    ├── 📄 quick-start.bat      # One-click startup
+    ├── 📄 start-backend.bat    # Backend server
+    └── 📄 start-frontend.bat   # Frontend server
+```
+
+## ⚙️ Installation
+
+### Method 1: Automated Installation (Recommended)
+```bash
+# Windows
+install.bat
+
+# Linux/macOS
+npm run install-all
+```
+
+### Method 2: Manual Installation
+```bash
+# Install root dependencies
+npm install
+
+# Install backend dependencies
+cd backend
+npm install
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
+
+## 🔧 Usage
+
+### Development Mode
+```bash
+# Start both servers (recommended)
+npm start
+
+# Or start individually
+npm run start-backend  # Backend only
+npm run start-frontend # Frontend only
+```
+
+### Production Mode
+```bash
+# Build frontend
+npm run build
+
+# Start production server
+NODE_ENV=production npm run start-backend
+```
+
+### Using Scripts (Windows)
+```bash
+quick-start.bat        # Start both servers
+start-backend.bat      # Backend only
+start-frontend.bat     # Frontend only
+```
+
+## 🎨 Customization
+
+### � Personal Information
+Edit `backend/src/controllers/profileController.js`:
+
+```javascript
+const profileData = {
+  name: '당신의 이름',                    // 👤 이름
+  title: '당신의 직책',                   // 💼 직책
+  email: 'your-email@example.com',      // 📧 이메일
+  location: 'Your Location',            // 🌍 위치
+  description: '당신의 소개글...',        // � 소개
+  skills: [                             // 🛠️ 기술 스택
+    'JavaScript', 'React', 'Node.js',
+    'Python', 'Docker', 'AWS'
+  ],
+  socialLinks: {                        // 🔗 소셜 링크
+    github: 'https://github.com/your-username',
+    instagram: 'https://instagram.com/your-username',
+    linkedin: 'https://linkedin.com/in/your-username'
+  }
+};
+```
+
+### 🎨 Styling
+Customize the appearance by editing files in `frontend/src/styles/`:
+
+- **App.css** - Global styles and themes
+- **Header.css** - Header and navigation
+- **About.css** - About section and profile image
+- **Skills.css** - Skills section
+- **Contact.css** - Contact section
+- **Footer.css** - Footer
+
+### 🖼️ Profile Image
+1. Add your image to `frontend/public/images/`
+2. Rename it to `image.jpg` (or update the reference in About.js)
+3. Recommended size: 300x300px
+4. Supported formats: JPG, PNG, GIF, WebP
+
+### 🌙 Dark Mode
+The dark mode toggle is in the header. Colors are controlled by CSS variables in `App.css`.
+
+## 🐳 Docker Support
+
+### Development
+```bash
+docker-compose up --build
+```
+
+### Production
+```bash
+docker-compose -f docker-compose.prod.yml up --build
+```
+
+### Individual Services
+```bash
+# Backend only
+docker build -t portfolio-backend ./backend
+docker run -p 3001:3001 portfolio-backend
+
+# Frontend only
+docker build -t portfolio-frontend ./frontend
+docker run -p 3000:3000 portfolio-frontend
+```
+
+## 🔧 API Documentation
+
+### Base URL
+- Development: `http://localhost:3001`
+- Production: `https://your-domain.com`
+
+### Endpoints
+
+#### GET /
+Basic API information
+```json
+{
+  "message": "Portfolio Backend API Server",
+  "version": "1.0.0",
+  "status": "running"
+}
+```
+
+#### GET /health
+Health check endpoint
+```json
+{
+  "status": "OK",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "uptime": 3600,
+  "memory": {...}
+}
+```
+
+#### GET /api/profile
+Get complete profile information
+```json
+{
+  "success": true,
+  "data": {
+    "name": "Seungchan An",
+    "title": "AI Researcher",
+    "email": "vpraise@naver.com",
+    "description": "...",
+    "skills": [...],
+    "interests": [...],
+    "socialLinks": {...}
+  }
+}
+```
+
+#### GET /api/profile/skills
+Get skills only
+```json
+{
+  "success": true,
+  "data": ["Python", "JavaScript", "React", "..."]
+}
+```
+
+#### GET /api/profile/contact
+Get contact information only
+```json
+{
+  "success": true,
+  "data": {
+    "email": "vpraise@naver.com",
+    "socialLinks": {...}
+  }
+}
+```
+
+## 🚀 Deployment
+
+### ☁️ Platform Options
+
+| Platform | Best For | Cost | Difficulty |
+|----------|----------|------|------------|
+| **Vercel** | Frontend only | Free tier | Easy |
+| **Netlify** | Static sites | Free tier | Easy |
+| **Heroku** | Full-stack | Free tier | Medium |
+| **AWS** | Production apps | Pay-as-go | Advanced |
+| **DigitalOcean** | VPS hosting | $5/month | Medium |
+
+### 🔧 Environment Variables
+
+Create `.env` in backend directory:
+```env
+# Server Configuration
+PORT=3001
+NODE_ENV=production
+
+# Security
+CORS_ORIGIN=https://your-domain.com
+HELMET_ENABLED=true
+
+# Logging
+LOG_LEVEL=error
+```
+
+### � Build Commands
+
+```bash
+# Frontend build
+cd frontend && npm run build
+
+# Backend start
+cd backend && npm start
+
+# Full build
+npm run build
+```
+
+## �🛠️ Troubleshooting
+
+### 🔍 Quick Diagnosis Tool
+
+**Windows users: If you're having Node.js issues, run this first:**
+```bash
+# Run the automated diagnosis tool
+diagnose-nodejs.bat
+```
+
+This tool will:
+- Check if Node.js is installed
+- Verify PATH configuration
+- Test common Node.js commands
+- Provide specific fix recommendations
+
+### 🔧 Enhanced Script Features
+
+Our batch files now include:
+- **Auto-detection** of Node.js in common installation paths
+- **Intelligent PATH fixing** for the current session
+- **Detailed error messages** with specific solutions
+- **Fallback mechanisms** when Node.js isn't in PATH
+
+### ❌ Common Issues & Solutions
+
+#### **"node is not recognized"**
+```bash
+# Solution: Install Node.js
+# 1. Download from https://nodejs.org/
+# 2. Install LTS version
+# 3. Restart computer
+# 4. Verify: node --version
+```
+
+#### **Port Already in Use**
+```bash
+# Check what's using the port
+netstat -ano | findstr :3000
+netstat -ano | findstr :3001
+
+# Kill the process (Windows)
+taskkill /PID [PID_NUMBER] /F
+
+# Kill the process (Linux/macOS)
+kill -9 [PID_NUMBER]
+```
+
+#### **Backend Connection Failed**
+```bash
+# 1. Check if backend is running
+curl http://localhost:3001/health
+
+# 2. Check firewall settings
+# 3. Verify port 3001 is not blocked
+
+# 4. Check logs in terminal for errors
+```
+
+#### **Dependencies Installation Failed**
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Delete and reinstall
+rm -rf node_modules package-lock.json
+npm install
+
+# Try with different registry
+npm install --registry https://registry.npmjs.org/
+```
+
+#### **React App Won't Start**
+```bash
+# Check Node.js version
+node --version  # Should be 16+
+
+# Clear React cache
+rm -rf node_modules/.cache
+
+# Reinstall React dependencies
+cd frontend
+rm -rf node_modules package-lock.json
+npm install
+```
+
+#### **Windows Batch Files Issues**
+```bash
+# If start-backend.bat or start-frontend.bat don't work:
+
+# 1. Check Node.js installation
+diagnose-nodejs.bat
+
+# 2. If Node.js is installed but not detected:
+# - Close all Command Prompt windows
+# - Open new Command Prompt as Administrator
+# - Try running the script again
+
+# 3. Manual start (alternative):
+# For backend:
+cd backend
+"C:\Program Files\nodejs\npm.cmd" start
+
+# For frontend:
+cd frontend  
+"C:\Program Files\nodejs\npm.cmd" start
+```
+
+#### **Servers Won't Start Separately**
+```bash
+# Make sure to run in separate terminals:
+
+# Terminal 1 (Backend):
+start-backend.bat
+# Wait for "Backend Server Started!" message
+
+# Terminal 2 (Frontend):
+start-frontend.bat
+# Wait for "webpack compiled" message
+```
+
+### 🔍 Debug Mode
+
+```bash
+# Backend with debug logs
+cd backend
+DEBUG=* npm start
+
+# Frontend with verbose logging
+cd frontend
+VERBOSE=true npm start
+
+# Both with debug info
+DEBUG=* npm start
+```
+
+### 🆘 Getting Help
+
+1. **Check the logs** in your terminal for error messages
+2. **Verify prerequisites** (Node.js, npm versions)
+3. **Try clean installation** using `clean-install-test.bat`
+4. **Check GitHub Issues** for similar problems
+5. **Run verification** with `npm run verify`
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how to get started:
+
+### 🔧 Development Setup
+
+```bash
+# 1. Fork the repository on GitHub
+
+# 2. Clone your fork
+git clone https://github.com/YOUR_USERNAME/personal-portfolio.git
+cd personal-portfolio
+
+# 3. Install dependencies
+npm run install-all
+
+# 4. Create a feature branch
+git checkout -b feature/amazing-feature
+
+# 5. Make your changes and test
+npm start
+
+# 6. Commit your changes
+git commit -m 'Add some amazing feature'
+
+# 7. Push to your fork
+git push origin feature/amazing-feature
+
+# 8. Open a Pull Request
+```
+
+### 📝 Contribution Guidelines
+
+- **Code Style**: Follow existing code patterns
+- **Testing**: Test your changes thoroughly
+- **Documentation**: Update README if needed
+- **Commits**: Use clear, descriptive commit messages
+- **Pull Requests**: Provide detailed description of changes
+
+### 🐛 Bug Reports
+
+When reporting bugs, please include:
+- Operating system and version
+- Node.js and npm versions
+- Error messages (full text)
+- Steps to reproduce
+- Expected vs actual behavior
+
+### 💡 Feature Requests
+
+For new features, please:
+- Check existing issues first
+- Describe the use case
+- Explain why it would be valuable
+- Consider implementation complexity
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+### What this means:
+- ✅ **Use commercially**
+- ✅ **Modify freely** 
+- ✅ **Distribute copies**
+- ✅ **Include in private use**
+- ❗ **Include license notice**
+
+---
+
+## 👨‍💻 Author
+
+**Seungchan An**
+- 🌟 **GitHub**: [@vpraise00](https://github.com/vpraise00)
+- 📷 **Instagram**: [@vpraise_a](https://instagram.com/vpraise_a)
+- 💼 **LinkedIn**: [seungchan-an](https://www.linkedin.com/in/%EC%8A%B9%EC%B0%AC-%EC%95%88-8a317a373/)
+- � **Email**: vpraise@naver.com
+
+---
+
+## 🎯 Project Roadmap
+
+### ✅ **Completed Features**
+- [x] React frontend with dark mode
+- [x] Node.js backend with REST API
+- [x] Docker containerization
+- [x] Responsive design
+- [x] Interactive animations
+- [x] Automated setup scripts
+- [x] Comprehensive documentation
+
+### 🔄 **In Progress**
+- [ ] Unit test coverage
+- [ ] CI/CD pipeline setup
+- [ ] Performance optimizations
+- [ ] Accessibility improvements
+
+### 📋 **Future Enhancements**
+- [ ] Blog/Articles section
+- [ ] Contact form with email integration
+- [ ] Admin dashboard
+- [ ] Multi-language support
+- [ ] Analytics integration
+- [ ] SEO optimization
+- [ ] PWA features
+
+### 🚀 **Version History**
+- **v1.0.0** - Initial release with basic portfolio features
+- **v1.1.0** - Added dark mode and animations
+- **v1.2.0** - Docker support and deployment guides
+- **v1.3.0** - Enhanced error handling and verification tools
+
+---
+
+## 🌟 Acknowledgments
+
+- **React Team** - For the amazing frontend framework
+- **Express.js** - For the robust backend framework
+- **Node.js Community** - For the extensive ecosystem
+- **Open Source Contributors** - For inspiration and libraries
+- **GitHub** - For hosting and collaboration tools
+
+---
+
+<div align="center">
+
+### 🌟 If this project helped you, please give it a star! 🌟
+
+**Made with ❤️ by [Seungchan An](https://github.com/vpraise00)**
+
+[⬆ Back to Top](#-personal-portfolio-website)
+
+</div>
+
+## 🚀 Quick Start
+
+### Prerequisites
+- **Node.js** (v16 or higher) - [Download here](https://nodejs.org/)
+- **npm** (comes with Node.js)
+
+### One-Click Setup
+```bash
+# Clone the repository
+git clone https://github.com/your-username/personal-portfolio.git
+cd personal-portfolio
+
+# Run the quick start script (Windows)
+quick-start.bat
+
+# Or for manual installation (All platforms)
+npm run install-all
+npm start
+```
+
+🎉 **That's it!** Your portfolio will be available at:
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3001
+
+## ✨ Features
+
+### 🎨 Frontend Features
+- **📱 Responsive Design** - Works on all devices
+- **🌙 Dark/Light Mode** - Toggle with system preference detection
+- **⚡ Interactive Animations** - Smooth transitions and hover effects
+- **🎯 Interactive Profile Image** - Physics-based animations and click effects
+- **� Real-time API Integration** - Dynamic data loading from backend
+- **⚠️ Error Handling** - Graceful fallbacks when backend is unavailable
+
+### 🔧 Backend Features
+- **🛡️ Security** - Helmet.js for security headers
+- **🌐 CORS Support** - Cross-origin resource sharing
+- **📊 Health Monitoring** - Health check and system information endpoints
+- **🔍 API Documentation** - Self-documenting API endpoints
+- **⚡ Performance** - Optimized for speed and efficiency
+- **🔄 Environment Configuration** - Flexible environment variables
+
+### 🏗️ Development Features
+- **🔧 Hot Reload** - Instant updates during development
+- **📦 Modular Architecture** - Easy to extend and maintain
+- **🐳 Docker Support** - Containerized deployment
+- **🔧 One-Click Scripts** - Automated setup and deployment
+- **📋 Comprehensive Logging** - Debug and monitor easily
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React** 18.2.0 - UI library
+- **Axios** - HTTP client
+- **CSS3** - Styling with CSS variables
+- **HTML5** - Semantic markup
+
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+
+- **Helmet.js** - Security middleware
+- **CORS** - Cross-origin resource sharing
+- **dotenv** - Environment variables
+
+### DevOps
+- **Docker** - Containerization
+- **npm** - Package management
+- **Git** - Version control
+
+## 📁 Project Structure
+
+```
+personal-portfolio/
+├── 📁 backend/                 # Node.js backend
+│   ├── 📁 src/
+│   │   ├── 📁 controllers/     # API controllers
+│   │   ├── 📁 routes/          # API routes
+│   │   └── 📄 server.js        # Main server file
+│   ├── 📄 package.json
+│   ├── 📄 .env                 # Environment variables
+│   └── 📄 Dockerfile
+├── 📁 frontend/                # React frontend
+│   ├── 📁 src/
+│   │   ├── 📁 components/      # React components
+│   │   ├── 📁 styles/          # CSS stylesheets
+│   │   ├── 📄 App.js           # Main app component
+│   │   └── 📄 index.js         # Entry point
+│   ├── 📁 public/
+│   │   ├── 📁 images/          # Static images
+│   │   └── 📄 index.html
+│   ├── 📄 package.json
+│   └── 📄 Dockerfile
+├── 📄 package.json             # Root package.json
+├── 📄 docker-compose.yml       # Docker configuration
+├── 📄 README.md                # This file
+├── 📄 .gitignore               # Git ignore rules
+└── 📁 scripts/                 # Automation scripts
+    ├── 📄 install.bat          # Dependencies installation
+    ├── 📄 quick-start.bat      # One-click startup
+    ├── 📄 start-backend.bat    # Backend server
+    └── 📄 start-frontend.bat   # Frontend server
+```
+
+## ⚙️ Installation
+
+### Method 1: Automated Installation (Recommended)
+```bash
+# Windows
+install.bat
+
+# Linux/macOS
+npm run install-all
+```
+
+### Method 2: Manual Installation
+```bash
+# Install root dependencies
+npm install
+
+# Install backend dependencies
+cd backend
+npm install
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
+
+## 🔧 Usage
+
+### Development Mode
+```bash
+# Start both servers (recommended)
+npm start
+
+# Or start individually
+npm run start-backend  # Backend only
+npm run start-frontend # Frontend only
+```
+
+### Production Mode
+```bash
+# Build frontend
+npm run build
+
+# Start production server
+NODE_ENV=production npm run start-backend
+```
+
+### Using Scripts (Windows)
+```bash
+quick-start.bat        # Start both servers
+start-backend.bat      # Backend only
+start-frontend.bat     # Frontend only
+```
+
+## 🎨 Customization
+
+### � Personal Information
+Edit `backend/src/controllers/profileController.js`:
+
+```javascript
+const profileData = {
+  name: '당신의 이름',                    // 👤 이름
+  title: '당신의 직책',                   // 💼 직책
+  email: 'your-email@example.com',      // 📧 이메일
+  location: 'Your Location',            // 🌍 위치
+  description: '당신의 소개글...',        // � 소개
+  skills: [                             // 🛠️ 기술 스택
+    'JavaScript', 'React', 'Node.js',
+    'Python', 'Docker', 'AWS'
+  ],
+  socialLinks: {                        // 🔗 소셜 링크
+    github: 'https://github.com/your-username',
+    instagram: 'https://instagram.com/your-username',
+    linkedin: 'https://linkedin.com/in/your-username'
+  }
+};
+```
+
+### 🎨 Styling
+Customize the appearance by editing files in `frontend/src/styles/`:
+
+- **App.css** - Global styles and themes
+- **Header.css** - Header and navigation
+- **About.css** - About section and profile image
+- **Skills.css** - Skills section
+- **Contact.css** - Contact section
+- **Footer.css** - Footer
+
+### 🖼️ Profile Image
+1. Add your image to `frontend/public/images/`
+2. Rename it to `image.jpg` (or update the reference in About.js)
+3. Recommended size: 300x300px
+4. Supported formats: JPG, PNG, GIF, WebP
+
+### 🌙 Dark Mode
+The dark mode toggle is in the header. Colors are controlled by CSS variables in `App.css`.
+
+## 🐳 Docker Support
+
+### Development
+```bash
+docker-compose up --build
+```
+
+### Production
+```bash
+docker-compose -f docker-compose.prod.yml up --build
+```
+
+### Individual Services
+```bash
+# Backend only
+docker build -t portfolio-backend ./backend
+docker run -p 3001:3001 portfolio-backend
+
+# Frontend only
+docker build -t portfolio-frontend ./frontend
+docker run -p 3000:3000 portfolio-frontend
+```
+
+## 🔧 API Documentation
+
+### Base URL
+- Development: `http://localhost:3001`
+- Production: `https://your-domain.com`
+
+### Endpoints
+
+#### GET /
+Basic API information
+```json
+{
+  "message": "Portfolio Backend API Server",
+  "version": "1.0.0",
+  "status": "running"
+}
+```
+
+#### GET /health
+Health check endpoint
+```json
+{
+  "status": "OK",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "uptime": 3600,
+  "memory": {...}
+}
+```
+
+#### GET /api/profile
+Get complete profile information
+```json
+{
+  "success": true,
+  "data": {
+    "name": "Seungchan An",
+    "title": "AI Researcher",
+    "email": "vpraise@naver.com",
+    "description": "...",
+    "skills": [...],
+    "interests": [...],
+    "socialLinks": {...}
+  }
+}
+```
+
+#### GET /api/profile/skills
+Get skills only
+```json
+{
+  "success": true,
+  "data": ["Python", "JavaScript", "React", "..."]
+}
+```
+
+#### GET /api/profile/contact
+Get contact information only
+```json
+{
+  "success": true,
+  "data": {
+    "email": "vpraise@naver.com",
+    "socialLinks": {...}
+  }
+}
+```
+
+## 🚀 Deployment
+
+### ☁️ Platform Options
+
+| Platform | Best For | Cost | Difficulty |
+|----------|----------|------|------------|
+| **Vercel** | Frontend only | Free tier | Easy |
+| **Netlify** | Static sites | Free tier | Easy |
+| **Heroku** | Full-stack | Free tier | Medium |
+| **AWS** | Production apps | Pay-as-go | Advanced |
+| **DigitalOcean** | VPS hosting | $5/month | Medium |
+
+### 🔧 Environment Variables
+
+Create `.env` in backend directory:
+```env
+# Server Configuration
+PORT=3001
+NODE_ENV=production
+
+# Security
+CORS_ORIGIN=https://your-domain.com
+HELMET_ENABLED=true
+
+# Logging
+LOG_LEVEL=error
+```
+
+### � Build Commands
+
+```bash
+# Frontend build
+cd frontend && npm run build
+
+# Backend start
+cd backend && npm start
+
+# Full build
+npm run build
+```
+
+## �🛠️ Troubleshooting
+
+### 🔍 Quick Diagnosis Tool
+
+**Windows users: If you're having Node.js issues, run this first:**
+```bash
+# Run the automated diagnosis tool
+diagnose-nodejs.bat
+```
+
+This tool will:
+- Check if Node.js is installed
+- Verify PATH configuration
+- Test common Node.js commands
+- Provide specific fix recommendations
+
+### 🔧 Enhanced Script Features
+
+Our batch files now include:
+- **Auto-detection** of Node.js in common installation paths
+- **Intelligent PATH fixing** for the current session
+- **Detailed error messages** with specific solutions
+- **Fallback mechanisms** when Node.js isn't in PATH
+
+### ❌ Common Issues & Solutions
+
+#### **"node is not recognized"**
+```bash
+# Solution: Install Node.js
+# 1. Download from https://nodejs.org/
+# 2. Install LTS version
+# 3. Restart computer
+# 4. Verify: node --version
+```
+
+#### **Port Already in Use**
+```bash
+# Check what's using the port
+netstat -ano | findstr :3000
+netstat -ano | findstr :3001
+
+# Kill the process (Windows)
+taskkill /PID [PID_NUMBER] /F
+
+# Kill the process (Linux/macOS)
+kill -9 [PID_NUMBER]
+```
+
+#### **Backend Connection Failed**
+```bash
+# 1. Check if backend is running
+curl http://localhost:3001/health
+
+# 2. Check firewall settings
+# 3. Verify port 3001 is not blocked
+
+# 4. Check logs in terminal for errors
+```
+
+#### **Dependencies Installation Failed**
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Delete and reinstall
+rm -rf node_modules package-lock.json
+npm install
+
+# Try with different registry
+npm install --registry https://registry.npmjs.org/
+```
+
+#### **React App Won't Start**
+```bash
+# Check Node.js version
+node --version  # Should be 16+
+
+# Clear React cache
+rm -rf node_modules/.cache
+
+# Reinstall React dependencies
+cd frontend
+rm -rf node_modules package-lock.json
+npm install
+```
+
+#### **Windows Batch Files Issues**
+```bash
+# If start-backend.bat or start-frontend.bat don't work:
+
+# 1. Check Node.js installation
+diagnose-nodejs.bat
+
+# 2. If Node.js is installed but not detected:
+# - Close all Command Prompt windows
+# - Open new Command Prompt as Administrator
+# - Try running the script again
+
+# 3. Manual start (alternative):
+# For backend:
+cd backend
+"C:\Program Files\nodejs\npm.cmd" start
+
+# For frontend:
+cd frontend  
+"C:\Program Files\nodejs\npm.cmd" start
+```
+
+#### **Servers Won't Start Separately**
+```bash
+# Make sure to run in separate terminals:
+
+# Terminal 1 (Backend):
+start-backend.bat
+# Wait for "Backend Server Started!" message
+
+# Terminal 2 (Frontend):
+start-frontend.bat
+# Wait for "webpack compiled" message
+```
+
+### 🔍 Debug Mode
+
+```bash
+# Backend with debug logs
+cd backend
+DEBUG=* npm start
+
+# Frontend with verbose logging
+cd frontend
+VERBOSE=true npm start
+
+# Both with debug info
+DEBUG=* npm start
+```
+
+### 🆘 Getting Help
+
+1. **Check the logs** in your terminal for error messages
+2. **Verify prerequisites** (Node.js, npm versions)
+3. **Try clean installation** using `clean-install-test.bat`
+4. **Check GitHub Issues** for similar problems
+5. **Run verification** with `npm run verify`
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how to get started:
+
+### 🔧 Development Setup
+
+```bash
+# 1. Fork the repository on GitHub
+
+# 2. Clone your fork
+git clone https://github.com/YOUR_USERNAME/personal-portfolio.git
+cd personal-portfolio
+
+# 3. Install dependencies
+npm run install-all
+
+# 4. Create a feature branch
+git checkout -b feature/amazing-feature
+
+# 5. Make your changes and test
+npm start
+
+# 6. Commit your changes
+git commit -m 'Add some amazing feature'
+
+# 7. Push to your fork
+git push origin feature/amazing-feature
+
+# 8. Open a Pull Request
+```
+
+### 📝 Contribution Guidelines
+
+- **Code Style**: Follow existing code patterns
+- **Testing**: Test your changes thoroughly
+- **Documentation**: Update README if needed
+- **Commits**: Use clear, descriptive commit messages
+- **Pull Requests**: Provide detailed description of changes
+
+### 🐛 Bug Reports
+
+When reporting bugs, please include:
+- Operating system and version
+- Node.js and npm versions
+- Error messages (full text)
+- Steps to reproduce
+- Expected vs actual behavior
+
+### 💡 Feature Requests
+
+For new features, please:
+- Check existing issues first
+- Describe the use case
+- Explain why it would be valuable
+- Consider implementation complexity
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+### What this means:
+- ✅ **Use commercially**
+- ✅ **Modify freely** 
+- ✅ **Distribute copies**
+- ✅ **Include in private use**
+- ❗ **Include license notice**
+
+---
+
+## 👨‍💻 Author
+
+**Seungchan An**
+- 🌟 **GitHub**: [@vpraise00](https://github.com/vpraise00)
+- 📷 **Instagram**: [@vpraise_a](https://instagram.com/vpraise_a)
+- 💼 **LinkedIn**: [seungchan-an](https://www.linkedin.com/in/%EC%8A%B9%EC%B0%AC-%EC%95%88-8a317a373/)
+- � **Email**: vpraise@naver.com
+
+---
+
+## 🎯 Project Roadmap
+
+### ✅ **Completed Features**
+- [x] React frontend with dark mode
+- [x] Node.js backend with REST API
+- [x] Docker containerization
+- [x] Responsive design
+- [x] Interactive animations
+- [x] Automated setup scripts
+- [x] Comprehensive documentation
+
+### 🔄 **In Progress**
+- [ ] Unit test coverage
+- [ ] CI/CD pipeline setup
+- [ ] Performance optimizations
+- [ ] Accessibility improvements
+
+### 📋 **Future Enhancements**
+- [ ] Blog/Articles section
+- [ ] Contact form with email integration
+- [ ] Admin dashboard
+- [ ] Multi-language support
+- [ ] Analytics integration
+- [ ] SEO optimization
+- [ ] PWA features
+
+### 🚀 **Version History**
+- **v1.0.0** - Initial release with basic portfolio features
+- **v1.1.0** - Added dark mode and animations
+- **v1.2.0** - Docker support and deployment guides
+- **v1.3.0** - Enhanced error handling and verification tools
+
+---
+
+## 🌟 Acknowledgments
+
+- **React Team** - For the amazing frontend framework
+- **Express.js** - For the robust backend framework
+- **Node.js Community** - For the extensive ecosystem
+- **Open Source Contributors** - For inspiration and libraries
+- **GitHub** - For hosting and collaboration tools
+
+---
+
+<div align="center">
+
+### 🌟 If this project helped you, please give it a star! 🌟
+
+**Made with ❤️ by [Seungchan An](https://github.com/vpraise00)**
+
+[⬆ Back to Top](#-personal-portfolio-website)
+
+</div>

@@ -1,6 +1,7 @@
 {
   "name": "portfolio-frontend",
   "version": "1.0.0",
+  "description": "Frontend React app for personal portfolio website",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -16,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prestart": "npm install",
+    "postinstall": "echo \"Frontend dependencies installed successfully!\""
   },
   "eslintConfig": {
     "extends": [
@@ -36,5 +39,17 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001"
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "proxy": "http://localhost:3001",
+  "keywords": [
+    "react",
+    "portfolio",
+    "frontend",
+    "personal-website"
+  ],
+  "author": "Seungchan An",
+  "license": "MIT"
 }

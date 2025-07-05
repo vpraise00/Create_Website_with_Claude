@@ -68,12 +68,89 @@ p {
   color: var(--text-color);
 }
 
-.loading {
+.loading-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   font-size: 1.5rem;
   color: var(--text-color);
   background-color: var(--bg-color);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--border-color);
+  border-top: 5px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.connection-warning {
+  background-color: #ffeaa7;
+  color: #2d3436;
+  padding: 10px;
+  text-align: center;
+  border-left: 4px solid #fdcb6e;
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.connection-warning button {
+  background-color: #0984e3;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.connection-warning button:hover {
+  background-color: #74b9ff;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .connection-warning {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 40px 0;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
 }

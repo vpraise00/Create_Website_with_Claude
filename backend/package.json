@@ -5,8 +5,10 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm install",
+    "postinstall": "echo \"Backend dependencies installed successfully!\""
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -17,11 +19,16 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
   "keywords": [
     "nodejs",
     "express",
     "portfolio",
-    "api"
+    "api",
+    "backend"
   ],
   "author": "Seungchan An",
   "license": "MIT"
