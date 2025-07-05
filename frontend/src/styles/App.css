@@ -1,7 +1,42 @@
+/* Light theme variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --accent-color: #e74c3c;
+  --card-bg: #f8f9fa;
+  --header-bg: #2c3e50;
+  --header-text: #ffffff;
+  --footer-bg: #34495e;
+  --footer-text: #ecf0f1;
+  --border-color: #e0e0e0;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --text-secondary: #b0b0b0;
+  --primary-color: #64b5f6;
+  --secondary-color: #81c784;
+  --accent-color: #f06292;
+  --card-bg: #2d2d2d;
+  --header-bg: #121212;
+  --header-text: #ffffff;
+  --footer-bg: #1a1a1a;
+  --footer-text: #ffffff;
+  --border-color: #404040;
+}
+
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 main {
@@ -14,16 +49,15 @@ section {
 
 h1, h2, h3, h4 {
   margin-bottom: 1rem;
+  color: var(--text-color);
 }
 
 h1 {
   font-size: 2.5rem;
-  color: #2c3e50;
 }
 
 h2 {
   font-size: 2rem;
-  color: #34495e;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -31,4 +65,15 @@ h2 {
 p {
   margin-bottom: 1rem;
   line-height: 1.6;
+  color: var(--text-color);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  background-color: var(--bg-color);
 }

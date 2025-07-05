@@ -1,38 +1,44 @@
-// 프로필 데이터 (실제 프로젝트에서는 데이터베이스에서 가져올 수 있음)
+// Profile data (can be fetched from database in real projects)
 const profileData = {
   name: 'Seungchan An',
-  title: 'Full Stack Developer',
-  email: 'vpraise00@gmail.com',
-  description: '안녕하세요! 저는 웹 개발과 데이터 사이언스에 열정을 가진 개발자입니다. 새로운 기술을 배우고 실제 프로젝트에 적용하는 것을 좋아합니다.',
+  title: 'AI Researcher',
+  email: 'vpraise@naver.com',
+  description: 'Hello! I am a 4th-year student at Tech University of Korea, residing in Suwon. I am passionate about artificial intelligence research with a focus on advancing the field through innovative solutions and cutting-edge technologies.',
   skills: [
-    'JavaScript',
-    'React',
-    'Node.js',
     'Python',
-    'Docker',
-    'AWS',
-    'MongoDB',
-    'Git'
+    'C',
+    'C++',
+    'Java',
+    'LaTeX',
+    'CARLA',
+    'MoraiSim',
+    'IsaacSim',
+    'TensorFlow',
+    'PyTorch',
+    'OpenCV',
+    'ROS'
   ],
   interests: [
-    '웹 개발 (Frontend & Backend)',
-    '데이터 사이언스 & 머신러닝',
-    '클라우드 컴퓨팅 & DevOps',
-    '오픈소스 기여'
+    'Reinforcement Learning',
+    'Robot Manipulation',
+    'Autonomous Driving',
+    'Computer Vision',
+    'Machine Learning',
+    'Deep Learning'
   ],
   socialLinks: {
-    github: 'https://github.com/seungchan-an',
-    instagram: 'https://instagram.com/seungchan.an',
-    linkedin: 'https://linkedin.com/in/seungchan-an'
+    github: 'https://github.com/vpraise00',
+    instagram: 'https://instagram.com/vpraise_a',
+    linkedin: 'https://www.linkedin.com/in/%EC%8A%B9%EC%B0%AC-%EC%95%88-8a317a373/'
   }
 };
 
-// 프로필 정보 조회
+// Get profile information
 exports.getProfile = (req, res) => {
   try {
     res.json(profileData);
   } catch (error) {
-    console.error('프로필 데이터 조회 중 오류:', error);
-    res.status(500).json({ message: '서버 오류가 발생했습니다.' });
+    console.error('Error fetching profile data:', error);
+    res.status(500).json({ message: 'Server error occurred.' });
   }
 };

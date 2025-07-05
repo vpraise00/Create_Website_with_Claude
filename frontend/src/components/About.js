@@ -11,18 +11,33 @@ const About = ({ profileData }) => {
             <h3>{profileData.title}</h3>
             <p>{profileData.description}</p>
             <div className="about-details">
-              <h4>주요 관심사</h4>
+              <h4>Research Interests</h4>
               <ul>
-                <li>웹 개발 (Frontend & Backend)</li>
-                <li>데이터 사이언스 & 머신러닝</li>
-                <li>클라우드 컴퓨팅 & DevOps</li>
-                <li>오픈소스 기여</li>
+                {profileData.interests && profileData.interests.map((interest, index) => (
+                  <li key={index}>{interest}</li>
+                ))}
               </ul>
+            </div>
+            <div className="contact-info">
+              <h4>Contact Information</h4>
+              <p>📧 Email: <a href={`mailto:${profileData.email}`}>{profileData.email}</a></p>
+              <p>📍 Location: Suwon, South Korea</p>
+              <p>🎓 Tech University of Korea (4th year)</p>
             </div>
           </div>
           <div className="about-image">
-            <div className="profile-placeholder">
-              <span>Profile Image</span>
+            <div className="profile-image">
+              <img 
+                src="/images/image.jpg" 
+                alt="Profile" 
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="profile-placeholder" style={{display: 'none'}}>
+                <span>Profile Image</span>
+              </div>
             </div>
           </div>
         </div>

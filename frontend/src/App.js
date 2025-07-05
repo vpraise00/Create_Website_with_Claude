@@ -10,25 +10,51 @@ import axios from 'axios';
 function App() {
   const [profileData, setProfileData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    // 백엔드에서 프로필 데이터 가져오기
+    // Check for saved dark mode preference
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode) {
+      setDarkMode(JSON.parse(savedDarkMode));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Apply dark mode to document
+    if (darkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+    // Save preference to localStorage
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  useEffect(() => {
+    // Fetch profile data from backend
     const fetchProfileData = async () => {
       try {
         const response = await axios.get('/api/profile');
         setProfileData(response.data);
       } catch (error) {
-        console.error('프로필 데이터를 가져오는 중 오류가 발생했습니다:', error);
-        // 오류 시 기본 데이터 사용
+        console.error('Error fetching profile data:', error);
+        // Use default data on error
         setProfileData({
           name: 'Seungchan An',
-          title: 'Full Stack Developer',
-          description: '웹 개발과 데이터 사이언스에 관심이 많은 개발자입니다.',
-          skills: ['JavaScript', 'React', 'Node.js', 'Python', 'Docker'],
+          title: 'AI Researcher',
+          email: 'vpraise@naver.com',
+          description: 'AI researcher passionate about advancing the field through innovative solutions.',
+          skills: ['Python', 'C++', 'TensorFlow', 'PyTorch', 'CARLA'],
+          interests: ['Reinforcement Learning', 'Robot Manipulation', 'Autonomous Driving'],
           socialLinks: {
-            github: 'https://github.com/seungchan-an',
-            instagram: 'https://instagram.com/seungchan.an',
-            linkedin: 'https://linkedin.com/in/seungchan-an'
+            github: 'https://github.com/vpraise00',
+            instagram: 'https://instagram.com/vpraise_a',
+            linkedin: 'https://www.linkedin.com/in/%EC%8A%B9%EC%B0%AC-%EC%95%88-8a317a373/'
           }
         });
       } finally {
@@ -45,11 +71,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <main>
         <About profileData={profileData} />
         <Skills skills={profileData.skills} />
-        <Contact socialLinks={profileData.socialLinks} />
+        <Contact profileData={profileData} />
       </main>
       <Footer />
     </div>
