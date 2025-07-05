@@ -93,6 +93,7 @@
 ```cmd
 quick-start.bat
 ```
+> 💡 **한국어 사용자 안내**: 모든 배치 파일의 메시지가 영어로 표시됩니다. 이는 Windows 명령 프롬프트의 한글 인코딩 문제를 방지하기 위함입니다.
 
 ### 📦 수동 설치
 ```cmd
@@ -215,9 +216,22 @@ const profileData = {
 
 ## 🛠️ 트러블슈팅
 
+### 🚨 Windows 인코딩 문제
+
+#### ❌ 배치 파일 실행 시 한글이 깨져서 나타남
+
+**원인**: Windows 명령 프롬프트의 인코딩 문제
+
+**해결완료**: 모든 배치 파일을 영어로 변경하여 해결됨
+- ✅ `quick-start.bat` - 영어 메시지로 변경
+- ✅ `install.bat` - 영어 메시지로 변경  
+- ✅ `start-backend.bat` - 영어 메시지로 변경
+- ✅ `start-frontend.bat` - 영어 메시지로 변경
+- ✅ `test-backend.bat` - 영어 메시지로 변경
+
 ### 🚨 Node.js 관련 문제
 
-#### ❌ 'node'은(는) 내부 또는 외부 명령이 아닙니다
+#### ❌ 'node' is not recognized as an internal or external command
 
 **원인**: Node.js가 설치되지 않았거나 시스템 PATH에 등록되지 않음
 

@@ -1,23 +1,22 @@
 @echo off
-title Portfolio - Install Dependencies
+title Portfolio Development Environment
 
 echo.
 echo ===================================================
-echo  📦 Installing Portfolio Project Dependencies...
+echo  🚀 Starting Portfolio Website Development Environment...
 echo ===================================================
 echo.
-
-REM Add Node.js path to PATH
-set "PATH=C:\Program Files\nodejs;%PATH%"
 
 echo 📋 Checking Node.js and npm versions...
 node --version
 npm --version
 
 if %errorlevel% neq 0 (
-    echo ❌ Node.js is not installed.
-    echo 🔧 Please install Node.js from https://nodejs.org/
-    echo 💡 Or update the PATH in this script if installed elsewhere.
+    echo ❌ Node.js is not installed or not in PATH.
+    echo 🔧 Solution:
+    echo    1. Install Node.js: https://nodejs.org/
+    echo    2. Restart command prompt
+    echo    3. Restart computer
     pause
     exit /b 1
 )
@@ -44,19 +43,24 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-cd ..
-
 echo.
 echo ===================================================
-echo  ✅ All dependencies successfully installed!
+echo  ✅ Dependencies installation completed!
 echo ===================================================
 echo.
-echo 🚀 Now choose one of the following to run:
+echo 🚀 To start servers, run the following commands:
 echo.
-echo 1. start-backend.bat   (Run Backend Server)
-echo 2. start-frontend.bat  (Run Frontend Server)
-echo 3. Or run both files separately
+echo 1. Backend (in new terminal):
+echo    cd backend
+echo    npm start
 echo.
-echo 📝 See README.md for detailed instructions.
+echo 2. Frontend (in another new terminal):
+echo    cd frontend
+echo    npm start
+echo.
+echo 3. Access in browser:
+echo    http://localhost:3000
+echo.
+echo ===================================================
 echo.
 pause

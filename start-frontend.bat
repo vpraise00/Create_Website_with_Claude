@@ -3,25 +3,25 @@ title Frontend Server - Portfolio
 
 echo.
 echo ===================================================
-echo  🎨 프론트엔드 서버를 시작합니다...
+echo  🎨 Starting Frontend Server...
 echo ===================================================
 echo.
 
 cd frontend
 
-echo 📦 의존성 확인 중...
+echo 📦 Checking dependencies...
 if not exist "node_modules" (
-    echo 📦 의존성을 설치합니다...
+    echo 📦 Installing dependencies...
     set "PATH=C:\Program Files\nodejs;%PATH%"
     npm install
 )
 
-echo 🚀 프론트엔드 서버를 시작합니다...
-echo 🌐 웹사이트: http://localhost:3000
-echo 🔄 개발 서버가 시작되면 브라우저가 자동으로 열립니다.
+echo 🚀 Starting frontend server...
+echo 🌐 Website: http://localhost:3000
+echo 🔄 Browser will open automatically when dev server starts.
 echo.
 
-REM Node.js 경로를 PATH에 추가
+REM Add Node.js path to PATH
 set "PATH=C:\Program Files\nodejs;%PATH%"
 
 npm start
