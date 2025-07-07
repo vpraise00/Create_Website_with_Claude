@@ -171,6 +171,12 @@ heroku create your-portfolio-api
 git subtree push --prefix backend heroku main
 ```
 
+### GitHub Pages (Frontend)
+```bash
+# Deploy to GitHub Pages
+deploy-to-github-pages.bat
+```
+
 ## 🛠️ Troubleshooting
 
 ### Windows: "Node.js not found"
@@ -235,3 +241,27 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Made with ❤️ by [Seungchan An](https://github.com/vpraise00)**
 
 > 💡 **Need help?** Check our [troubleshooting guide](#️-troubleshooting) or open an issue on GitHub.
+
+---
+
+## 🌐 GitHub Pages Deployment
+
+Deploy your portfolio as a static website to GitHub Pages:
+
+### Quick Deploy
+```bash
+# Deploy to GitHub Pages
+deploy-to-github-pages.bat
+```
+
+### Manual Setup
+1. **Create GitHub Repository** (public)
+2. **Add homepage to package.json:**
+   ```json
+   "homepage": "https://[username].github.io/[repository-name]"
+   ```
+3. **Deploy:** Run `deploy-to-github-pages.bat`
+
+📋 **Detailed Guide:** See [GITHUB_PAGES_GUIDE.md](GITHUB_PAGES_GUIDE.md)
+
+---

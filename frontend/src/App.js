@@ -46,37 +46,41 @@ function App() {
         setLoading(true);
         setError(null);
         
-        // 백엔드 연결 확인을 위한 헬스체크
-        const healthResponse = await axios.get('http://localhost:3001/health', {
-          timeout: 5000,
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        });
+        // GitHub Pages 배포 환경에서는 백엔드 API 호출 건너뛰기
+        const isGitHubPages = window.location.hostname.includes('github.io');
         
-        if (healthResponse.status === 200) {
-          // 백엔드가 정상이면 프로필 데이터 가져오기
-          const response = await axios.get('http://localhost:3001/api/profile', {
-            timeout: 10000, // 10초 타임아웃
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+        if (!isGitHubPages) {
+          // 로컬 개발 환경에서만 백엔드 연결 시도
+          try {
+            const healthResponse = await axios.get('http://localhost:3001/health', {
+              timeout: 5000,
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              }
+            });
+            
+            if (healthResponse.status === 200) {
+              const response = await axios.get('http://localhost:3001/api/profile', {
+                timeout: 10000,
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                }
+              });
+              
+              if (response.data.success) {
+                setProfileData(response.data.data);
+                setLoading(false);
+                return;
+              }
             }
-          });
-          
-          if (response.data.success) {
-            setProfileData(response.data.data);
-          } else {
-            throw new Error(response.data.message || 'Failed to fetch profile data');
+          } catch (backendError) {
+            console.log('Backend not available, using static data');
           }
         }
         
-      } catch (error) {
-        console.error('Error fetching profile data:', error);
-        setError(error.message);
-        
-        // 백엔드 연결 실패 시 기본 데이터 사용
+        // GitHub Pages 또는 백엔드 연결 실패 시 정적 데이터 사용
         setProfileData({
           name: 'Seungchan An',
           title: 'AI Researcher',
@@ -100,6 +104,10 @@ function App() {
             email: 'mailto:vpraise@naver.com'
           }
         });
+        
+      } catch (error) {
+        console.error('Error loading profile data:', error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -118,8 +126,8 @@ function App() {
     );
   }
 
-  // 에러 상태 (데이터는 있지만 백엔드 연결 실패 시 경고 표시)
-  const showWarning = error && profileData;
+  // 에러 상태 (로컬 개발 환경에서만 백엔드 연결 실패 시 경고 표시)
+  const showWarning = error && profileData && !window.location.hostname.includes('github.io');
 
   return (
     <div className="App">
