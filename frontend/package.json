@@ -2,7 +2,7 @@
   "name": "portfolio-frontend",
   "version": "1.0.0",
   "description": "Frontend React app for personal portfolio website",
-  "homepage": "https://vpraise00.github.io/portfolio-website",
+  "homepage": "https://vpraise00.github.io/Create_Website_with_Claude",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
