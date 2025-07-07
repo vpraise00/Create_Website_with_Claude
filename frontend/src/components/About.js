@@ -235,7 +235,7 @@ const About = ({ profileData }) => {
                 }}
               >
                 <img 
-                  src="/images/image.jpg" 
+                  src={`${process.env.PUBLIC_URL}/images/image.jpg`} 
                   alt="Profile" 
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -243,7 +243,10 @@ const About = ({ profileData }) => {
                   }}
                 />
                 <div className="profile-placeholder" style={{display: 'none'}}>
-                  <span>Profile Image</span>
+                  <div className="placeholder-content">
+                    <div className="placeholder-icon">👤</div>
+                    <span>프로필 이미지</span>
+                  </div>
                 </div>
               </div>
             ) : (              // Physics mode - floating ball
@@ -264,7 +267,7 @@ const About = ({ profileData }) => {
                 }}
               >
                 <img 
-                  src="/images/image.jpg" 
+                  src={`${process.env.PUBLIC_URL}/images/image.jpg`} 
                   alt="Profile" 
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -272,7 +275,10 @@ const About = ({ profileData }) => {
                   }}
                 />
                 <div className="profile-placeholder" style={{display: 'none'}}>
-                  <span>Profile Image</span>
+                  <div className="placeholder-content">
+                    <div className="placeholder-icon">👤</div>
+                    <span>프로필 이미지</span>
+                  </div>
                 </div>
               </div>
             )}
