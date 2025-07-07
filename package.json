@@ -17,9 +17,9 @@
     "test": "concurrently \"npm run test-backend\" \"npm run test-frontend\"",
     "test-backend": "cd backend && npm test",
     "test-frontend": "cd frontend && npm test",
+    "deploy": "cd frontend && npm run deploy",
     "clean": "rimraf backend/node_modules frontend/node_modules node_modules",
-    "check-ports": "netstat -ano | findstr :3000 && netstat -ano | findstr :3001",
-    "verify": "node verify.js"
+    "check-ports": "netstat -ano | findstr :3000 && netstat -ano | findstr :3001"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
