@@ -8,6 +8,8 @@ const About = ({ profileData }) => {
   const [ballVelocity, setBallVelocity] = useState({ x: 0, y: 0 });
   const [ballRotation, setBallRotation] = useState(0);
   const [clickEffect, setClickEffect] = useState({ show: false, x: 0, y: 0 });
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const profileImageRef = useRef(null);
   const animationRef = useRef(null);
   const containerRef = useRef(null);
@@ -234,20 +236,29 @@ const About = ({ profileData }) => {
                   transition: 'transform 0.1s ease-out'
                 }}
               >
-                <img 
-                  src={`${process.env.PUBLIC_URL}/images/image.jpg`} 
-                  alt="Profile" 
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'flex';
-                  }}
-                />
-                <div className="profile-placeholder" style={{display: 'none'}}>
-                  <div className="placeholder-content">
-                    <div className="placeholder-icon">👤</div>
-                    <span>프로필 이미지</span>
+                {!imageError && (
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/images/image.jpg`} 
+                    alt="Profile" 
+                    onLoad={() => {
+                      setImageLoaded(true);
+                      setImageError(false);
+                    }}
+                    onError={() => {
+                      setImageLoaded(false);
+                      setImageError(true);
+                    }}
+                    style={{ display: imageError ? 'none' : 'block' }}
+                  />
+                )}
+                {imageError && (
+                  <div className="profile-placeholder">
+                    <div className="placeholder-content">
+                      <div className="placeholder-icon">👤</div>
+                      <span>프로필 이미지</span>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             ) : (              // Physics mode - floating ball
               <div 
@@ -266,20 +277,29 @@ const About = ({ profileData }) => {
                   transform: `rotate(${ballRotation}deg)`
                 }}
               >
-                <img 
-                  src={`${process.env.PUBLIC_URL}/images/image.jpg`} 
-                  alt="Profile" 
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'flex';
-                  }}
-                />
-                <div className="profile-placeholder" style={{display: 'none'}}>
-                  <div className="placeholder-content">
-                    <div className="placeholder-icon">👤</div>
-                    <span>프로필 이미지</span>
+                {!imageError && (
+                  <img 
+                    src={`${process.env.PUBLIC_URL}/images/image.jpg`} 
+                    alt="Profile" 
+                    onLoad={() => {
+                      setImageLoaded(true);
+                      setImageError(false);
+                    }}
+                    onError={() => {
+                      setImageLoaded(false);
+                      setImageError(true);
+                    }}
+                    style={{ display: imageError ? 'none' : 'block' }}
+                  />
+                )}
+                {imageError && (
+                  <div className="profile-placeholder">
+                    <div className="placeholder-content">
+                      <div className="placeholder-icon">👤</div>
+                      <span>프로필 이미지</span>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             )}
             
