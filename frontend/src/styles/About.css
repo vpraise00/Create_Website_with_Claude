@@ -615,8 +615,7 @@
     height: 300px;
   }
   
-  .profile-image,
-  .profile-placeholder {
+  .profile-image {
     width: 200px;
     height: 200px;
   }
