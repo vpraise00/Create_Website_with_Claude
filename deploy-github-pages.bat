@@ -42,18 +42,9 @@ if %errorlevel% neq 0 (
 echo ✅ Git repository is configured.
 echo.
 
-echo 3. Moving to frontend directory...
+echo 3. Installing/updating gh-pages...
 echo.
-if not exist "frontend" (
-    echo [ERROR] Frontend directory not found!
-    pause
-    exit /b 1
-)
-
 cd frontend
-
-echo 4. Installing/updating gh-pages...
-echo.
 npm install gh-pages --save-dev
 if %errorlevel% neq 0 (
     echo [ERROR] Failed to install gh-pages
@@ -64,21 +55,17 @@ if %errorlevel% neq 0 (
 echo ✅ gh-pages package ready.
 echo.
 
-echo 5. Checking homepage configuration...
+echo 4. Checking homepage configuration...
 echo.
 findstr "homepage" package.json
 if %errorlevel% neq 0 (
     echo [WARNING] No homepage field found in package.json
     echo Please add: "homepage": "https://username.github.io/repository-name"
-    echo [INFO] Continuing with deployment anyway...
-    echo.
-) else (
-    echo ✅ Homepage configuration found.
-    echo.
+    pause
 )
 
 echo.
-echo 6. Building React application...
+echo 5. Building React application...
 echo.
 npm run build
 if %errorlevel% neq 0 (
@@ -90,7 +77,7 @@ if %errorlevel% neq 0 (
 echo ✅ Build completed successfully.
 echo.
 
-echo 7. Deploying to GitHub Pages...
+echo 6. Deploying to GitHub Pages...
 echo.
 npm run deploy
 if %errorlevel% neq 0 (
@@ -100,7 +87,6 @@ if %errorlevel% neq 0 (
     echo   1. Check Git authentication (git config --global user.name/email)
     echo   2. Verify repository permissions
     echo   3. Ensure homepage URL is correct
-    echo   4. Make sure gh-pages branch exists
     echo.
     pause
     exit /b 1
