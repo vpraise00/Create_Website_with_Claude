@@ -149,6 +149,31 @@ npm run deploy
 "homepage": "https://vpraise00.github.io/Create_Website_with_Claude"
 ```
 
+### 404 Error (가장 흔한 문제)
+```bash
+# 1. gh-pages 브랜치가 없는 경우
+cd frontend
+npx gh-pages -d build -r https://github.com/[username]/[repository].git
+
+# 2. GitHub Pages 설정 확인
+# GitHub → Settings → Pages → Source: gh-pages branch
+
+# 3. 빌드 파일 확인
+cd frontend
+npm run build
+# build 폴더에 index.html이 있는지 확인
+```
+
+### 브랜치 문제
+```bash
+# gh-pages 브랜치 확인
+git branch -a
+
+# gh-pages 브랜치가 없으면 강제 생성
+cd frontend
+npx gh-pages -d build -r https://github.com/username/repository.git
+```
+
 ## 추가 기능
 
 ### 사용자 정의 도메인
