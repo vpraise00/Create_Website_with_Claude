@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Create_Website_with_Claude/static/css/main.735de34a.css",
-    "main.js": "/Create_Website_with_Claude/static/js/main.a4d823ec.js",
+    "main.css": "/Create_Website_with_Claude/static/css/main.892acbd4.css",
+    "main.js": "/Create_Website_with_Claude/static/js/main.746394de.js",
     "index.html": "/Create_Website_with_Claude/index.html",
-    "main.735de34a.css.map": "/Create_Website_with_Claude/static/css/main.735de34a.css.map",
-    "main.a4d823ec.js.map": "/Create_Website_with_Claude/static/js/main.a4d823ec.js.map"
+    "main.892acbd4.css.map": "/Create_Website_with_Claude/static/css/main.892acbd4.css.map",
+    "main.746394de.js.map": "/Create_Website_with_Claude/static/js/main.746394de.js.map"
   },
   "entrypoints": [
-    "static/css/main.735de34a.css",
-    "static/js/main.a4d823ec.js"
+    "static/css/main.892acbd4.css",
+    "static/js/main.746394de.js"
   ]
 }
