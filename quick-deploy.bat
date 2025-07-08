@@ -4,7 +4,7 @@ echo   🚀 Quick GitHub Pages Deploy
 echo ===============================================
 echo.
 
-cd /d "%~dp0\frontend"
+cd /d "%~dp0"
 
 echo 📦 Building React app...
 npm run build
@@ -18,7 +18,7 @@ echo ✅ Build successful!
 echo.
 
 echo 🚀 Deploying to GitHub Pages...
-npx gh-pages -d build -r https://github.com/vpraise00/Create_Website_with_Claude.git
+npm run deploy
 if %errorlevel% neq 0 (
     echo [ERROR] Deploy failed!
     echo.

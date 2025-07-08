@@ -44,7 +44,6 @@ echo.
 
 echo 3. Installing/updating gh-pages...
 echo.
-cd frontend
 npm install gh-pages --save-dev
 if %errorlevel% neq 0 (
     echo [ERROR] Failed to install gh-pages
@@ -61,7 +60,11 @@ findstr "homepage" package.json
 if %errorlevel% neq 0 (
     echo [WARNING] No homepage field found in package.json
     echo Please add: "homepage": "https://username.github.io/repository-name"
-    pause
+    echo [INFO] Continuing with deployment anyway...
+    echo.
+) else (
+    echo ✅ Homepage configuration found.
+    echo.
 )
 
 echo.
@@ -87,6 +90,7 @@ if %errorlevel% neq 0 (
     echo   1. Check Git authentication (git config --global user.name/email)
     echo   2. Verify repository permissions
     echo   3. Ensure homepage URL is correct
+    echo   4. Make sure gh-pages branch exists
     echo.
     pause
     exit /b 1
