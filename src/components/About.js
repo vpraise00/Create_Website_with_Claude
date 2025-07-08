@@ -13,8 +13,10 @@ const About = ({ profileData }) => {
   const animationRef = useRef(null);
   const containerRef = useRef(null);
 
-  // GitHub Pages 배포를 위한 이미지 경로
-  const imagePath = '/Create_Website_with_Claude/images/image.jpg';
+  // GitHub Pages 배포를 위한 이미지 경로 (절대 경로로 수정)
+  const imagePath = process.env.NODE_ENV === 'production' 
+    ? '/Create_Website_with_Claude/images/image.jpg'
+    : '/images/image.jpg';
 
   // Mouse tracking for normal mode
   useEffect(() => {
