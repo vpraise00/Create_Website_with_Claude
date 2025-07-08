@@ -8,13 +8,17 @@ const About = ({ profileData }) => {
   const [ballVelocity, setBallVelocity] = useState({ x: 0, y: 0 });
   const [ballRotation, setBallRotation] = useState(0);
   const [clickEffect, setClickEffect] = useState({ show: false, x: 0, y: 0 });
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const profileImageRef = useRef(null);
   const animationRef = useRef(null);
   const containerRef = useRef(null);
+  const aboutSectionRef = useRef(null);
 
-  // GitHub Pages 배포를 위한 이미지 경로
-  const imagePath = '/Create_Website_with_Claude/images/image.jpg';
+  // 정확한 이미지 경로 (확인된 경로)
+  const getImagePath = () => {
+    return '/Create_Website_with_Claude/images/image.jpg';
+  };
 
   // Mouse tracking for normal mode
   useEffect(() => {
@@ -195,19 +199,27 @@ const About = ({ profileData }) => {
   };
 
   // 이미지 로드 성공 핸들러
-  const handleImageLoad = () => {
-    console.log('✅ 이미지 로드 성공:', imagePath);
+  const handleImageLoad = (e) => {
+    console.log('✅ 이미지 로드 성공!');
+    console.log('- URL:', e.target.src);
+    console.log('- 크기:', e.target.naturalWidth, 'x', e.target.naturalHeight);
+    console.log('- 시간:', new Date().toISOString());
+    setImageLoaded(true);
     setImageError(false);
   };
 
   // 이미지 로드 실패 핸들러
-  const handleImageError = () => {
-    console.error('❌ 이미지 로드 실패:', imagePath);
+  const handleImageError = (e) => {
+    console.error('❌ 이미지 로드 실패!');
+    console.error('- URL:', e.target.src);
+    console.error('- 시간:', new Date().toISOString());
+    console.error('- 온라인 상태:', navigator.onLine);
+    setImageLoaded(false);
     setImageError(true);
   };
 
   return (
-    <section id="about" className="about">
+    <section id="about" className="about" ref={aboutSectionRef}>
       <div className="container" ref={containerRef}>
         <div className="about-content">
           <div className="about-text">
@@ -243,26 +255,27 @@ const About = ({ profileData }) => {
                   transition: 'transform 0.1s ease-out'
                 }}
               >
-                {!imageError ? (
+                {!imageError && (
                   <img 
-                    src={imagePath}
-                    alt="Profile"
+                    src={getImagePath()} 
+                    alt="Profile" 
                     onLoad={handleImageLoad}
                     onError={handleImageError}
-                    style={{
+                    style={{ 
+                      display: 'block',
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
-                      borderRadius: '50%',
-                      display: 'block'
+                      borderRadius: '50%'
                     }}
                   />
-                ) : (
+                )}
+                {imageError && (
                   <div className="profile-placeholder">
                     <div className="placeholder-content">
                       <div className="placeholder-icon">👤</div>
                       <span>프로필 이미지</span>
-                      <small>경로: {imagePath}</small>
+                      <small>경로: {getImagePath()}</small>
                     </div>
                   </div>
                 )}
@@ -285,21 +298,22 @@ const About = ({ profileData }) => {
                   transform: `rotate(${ballRotation}deg)`
                 }}
               >
-                {!imageError ? (
+                {!imageError && (
                   <img 
-                    src={imagePath}
-                    alt="Profile"
+                    src={getImagePath()} 
+                    alt="Profile" 
                     onLoad={handleImageLoad}
                     onError={handleImageError}
-                    style={{
+                    style={{ 
+                      display: 'block',
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
-                      borderRadius: '50%',
-                      display: 'block'
+                      borderRadius: '50%'
                     }}
                   />
-                ) : (
+                )}
+                {imageError && (
                   <div className="profile-placeholder">
                     <div className="placeholder-content">
                       <div className="placeholder-icon">👤</div>

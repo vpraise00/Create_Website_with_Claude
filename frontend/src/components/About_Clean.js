@@ -9,12 +9,22 @@ const About = ({ profileData }) => {
   const [ballRotation, setBallRotation] = useState(0);
   const [clickEffect, setClickEffect] = useState({ show: false, x: 0, y: 0 });
   const [imageError, setImageError] = useState(false);
+  
   const profileImageRef = useRef(null);
   const animationRef = useRef(null);
   const containerRef = useRef(null);
+  const aboutSectionRef = useRef(null);
 
-  // GitHub Pages 배포를 위한 이미지 경로
-  const imagePath = '/Create_Website_with_Claude/images/image.jpg';
+  // 🎯 간단하고 확실한 이미지 경로
+  const IMAGE_URL = '/Create_Website_with_Claude/images/image.jpg';
+
+  // 🔍 디버깅용 - 컴포넌트 마운트 시 정보 출력
+  useEffect(() => {
+    console.log('🔍 About 컴포넌트 로드됨');
+    console.log('📍 현재 URL:', window.location.href);
+    console.log('🖼️ 이미지 경로:', IMAGE_URL);
+    console.log('🌐 전체 이미지 URL:', window.location.origin + IMAGE_URL);
+  }, []);
 
   // Mouse tracking for normal mode
   useEffect(() => {
@@ -91,7 +101,7 @@ const About = ({ profileData }) => {
         // Update rotation based on horizontal velocity
         setBallRotation(prev => prev + ballVelocity.x * 2);
 
-        return prev; // This will be overridden by setBallPosition above
+        return prev;
       });
 
       animationRef.current = requestAnimationFrame(animate);
@@ -112,26 +122,22 @@ const About = ({ profileData }) => {
     e.stopPropagation();
 
     if (!isPhysicsMode) {
-      // Start physics mode with click effect
+      // Start physics mode
       const rect = profileImageRef.current.getBoundingClientRect();
       
-      // Show click effect
       setClickEffect({
         show: true,
         x: rect.left + rect.width / 2,
         y: rect.top + rect.height / 2
       });
 
-      // Hide click effect after animation
       setTimeout(() => setClickEffect({ show: false, x: 0, y: 0 }), 800);
 
-      // Set initial ball position
       setBallPosition({
         x: rect.left + rect.width / 2,
         y: rect.top + rect.height / 2
       });
       
-      // Give initial random velocity
       setBallVelocity({
         x: (Math.random() - 0.5) * 15,
         y: -Math.random() * 10 - 5
@@ -140,7 +146,7 @@ const About = ({ profileData }) => {
       setBallRotation(0);
       setIsPhysicsMode(true);
     } else {
-      // Add impulse force when clicked in physics mode
+      // Add impulse force
       const clickX = e.clientX;
       const clickY = e.clientY;
       
@@ -181,7 +187,7 @@ const About = ({ profileData }) => {
     }
   }, [isPhysicsMode]);
 
-  // Calculate mouse interaction transform for normal mode
+  // Calculate mouse interaction transform
   const getMouseTransform = () => {
     if (isPhysicsMode) return '';
     
@@ -194,20 +200,55 @@ const About = ({ profileData }) => {
     return `translate(${deltaX}px, ${deltaY}px) scale(${1 + Math.abs(deltaX + deltaY) * 0.002})`;
   };
 
-  // 이미지 로드 성공 핸들러
+  // 🎯 이미지 로드 성공 핸들러
   const handleImageLoad = () => {
-    console.log('✅ 이미지 로드 성공:', imagePath);
+    console.log('✅ 이미지 로드 성공!');
     setImageError(false);
   };
 
-  // 이미지 로드 실패 핸들러
-  const handleImageError = () => {
-    console.error('❌ 이미지 로드 실패:', imagePath);
+  // 🚨 이미지 로드 실패 핸들러
+  const handleImageError = (e) => {
+    console.error('❌ 이미지 로드 실패!');
+    console.error('시도한 URL:', e.target.src);
+    console.error('전체 URL:', window.location.origin + IMAGE_URL);
     setImageError(true);
   };
 
+  // 🖼️ 이미지 컴포넌트 (재사용 가능)
+  const ProfileImage = ({ className = "", style = {} }) => (
+    <>
+      {!imageError ? (
+        <img 
+          src={IMAGE_URL}
+          alt="Profile" 
+          onLoad={handleImageLoad}
+          onError={handleImageError}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: '50%',
+            display: 'block',
+            ...style
+          }}
+          className={className}
+        />
+      ) : (
+        <div className="profile-placeholder">
+          <div className="placeholder-content">
+            <div className="placeholder-icon">👤</div>
+            <span>프로필 이미지</span>
+            <small style={{ fontSize: '0.8rem', opacity: 0.7 }}>
+              {IMAGE_URL}
+            </small>
+          </div>
+        </div>
+      )}
+    </>
+  );
+
   return (
-    <section id="about" className="about">
+    <section id="about" className="about" ref={aboutSectionRef}>
       <div className="container" ref={containerRef}>
         <div className="about-content">
           <div className="about-text">
@@ -232,7 +273,7 @@ const About = ({ profileData }) => {
           
           <div className="about-image">
             {!isPhysicsMode ? (
-              // Normal mode - image in original position
+              // 🎯 일반 모드 - 원래 위치의 이미지
               <div 
                 className="profile-image"
                 ref={profileImageRef}
@@ -243,32 +284,10 @@ const About = ({ profileData }) => {
                   transition: 'transform 0.1s ease-out'
                 }}
               >
-                {!imageError ? (
-                  <img 
-                    src={imagePath}
-                    alt="Profile"
-                    onLoad={handleImageLoad}
-                    onError={handleImageError}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      borderRadius: '50%',
-                      display: 'block'
-                    }}
-                  />
-                ) : (
-                  <div className="profile-placeholder">
-                    <div className="placeholder-content">
-                      <div className="placeholder-icon">👤</div>
-                      <span>프로필 이미지</span>
-                      <small>경로: {imagePath}</small>
-                    </div>
-                  </div>
-                )}
+                <ProfileImage />
               </div>
             ) : (
-              // Physics mode - floating ball
+              // 🎾 물리학 모드 - 날아다니는 공
               <div 
                 className="profile-image physics-mode"
                 ref={profileImageRef}
@@ -285,28 +304,7 @@ const About = ({ profileData }) => {
                   transform: `rotate(${ballRotation}deg)`
                 }}
               >
-                {!imageError ? (
-                  <img 
-                    src={imagePath}
-                    alt="Profile"
-                    onLoad={handleImageLoad}
-                    onError={handleImageError}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      borderRadius: '50%',
-                      display: 'block'
-                    }}
-                  />
-                ) : (
-                  <div className="profile-placeholder">
-                    <div className="placeholder-content">
-                      <div className="placeholder-icon">👤</div>
-                      <span>프로필 이미지</span>
-                    </div>
-                  </div>
-                )}
+                <ProfileImage />
               </div>
             )}
             
@@ -321,7 +319,7 @@ const About = ({ profileData }) => {
         </div>
       </div>
 
-      {/* Enhanced Click Effect */}
+      {/* ✨ 클릭 효과 */}
       {clickEffect.show && (
         <div 
           className="click-effect"
