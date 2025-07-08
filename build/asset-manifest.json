@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Create_Website_with_Claude/static/css/main.735de34a.css",
+    "main.js": "/Create_Website_with_Claude/static/js/main.a4d823ec.js",
+    "index.html": "/Create_Website_with_Claude/index.html",
+    "main.735de34a.css.map": "/Create_Website_with_Claude/static/css/main.735de34a.css.map",
+    "main.a4d823ec.js.map": "/Create_Website_with_Claude/static/js/main.a4d823ec.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.735de34a.css",
+    "static/js/main.a4d823ec.js"
+  ]
+}
